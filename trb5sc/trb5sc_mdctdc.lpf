@@ -1,0 +1,180 @@
+COMMERCIAL ;
+BLOCK RESETPATHS ;
+BLOCK ASYNCPATHS ;
+BLOCK RD_DURING_WR_PATHS ;
+
+#################################################################
+# Basic Settings
+#################################################################
+
+FREQUENCY PORT CLK_200       200 MHz;
+FREQUENCY PORT CLK_125       125 MHz;
+FREQUENCY PORT CLK_EXT       200 MHz;
+
+FREQUENCY NET "THE_MEDIA_INTERFACE/gen_pcs0.THE_SERDES/serdes_sync_0_inst/clk_tx_full" 200 MHz;
+FREQUENCY NET "THE_MEDIA_INTERFACE/gen_pcs1.THE_SERDES/serdes_sync_0_inst/clk_tx_full" 200 MHz;
+# FREQUENCY NET "med_stat_debug[11]" 200 MHz;
+
+FREQUENCY NET "med2int_0.clk_full" 200 MHz;
+# FREQUENCY NET THE_MEDIA_INTERFACE/clk_rx_full 200 MHz;
+
+
+BLOCK PATH TO   PORT "LED*";
+BLOCK PATH TO   PORT "PROGRAMN";
+BLOCK PATH TO   PORT "TEMP_LINE";
+BLOCK PATH FROM PORT "TEMP_LINE";
+BLOCK PATH TO   PORT "TEST_LINE*";
+
+#MULTICYCLE TO CELL   "THE_CLOCK_RESET/THE_RESET_HANDLER/trb_reset_pulse*" 20 ns;
+#MULTICYCLE FROM CELL "THE_CLOCK_RESET/clear_n_i" 20 ns;
+#MULTICYCLE TO CELL   "THE_CLOCK_RESET/THE_RESET_HANDLER/final_reset*" 30 ns;
+#MULTICYCLE FROM CELL "THE_CLOCK_RESET/THE_RESET_HANDLER/final_reset*" 30 ns;
+
+MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_SCI_READER/PROC_SCI_CTRL.BUS_TX*" 10 ns;
+MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_MED_CONTROL/THE_TX/STAT_REG_OUT*" 10 ns;
+
+GSR_NET NET "clear_i"; 
+
+# LOCATE COMP          "THE_MEDIA_INTERFACE/gen_pcs0.THE_SERDES/DCU0_inst" SITE "DCU0" ;
+
+
+REGION               "MEDIA" "R81C44D" 13 25;
+LOCATE UGROUP        "THE_MEDIA_INTERFACE/media_interface_group" REGION "MEDIA" ;
+
+
+# UGROUP "INPGATE0" BBOX 1 1
+#   BLKNAME THE_TDC/gen_channels.0.inpgate[0]
+#   ;
+# LOCATE UGROUP "INPGATE0"  SITE "R14C4D";
+
+UGROUP "ffarr0groupA" BBOX 3 3
+  BLKNAME THE_TDC/ffarr_0_0
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[1]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[2]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[3]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[4]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[5]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[6]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[7]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[8]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[9]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[10]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[11]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[12]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[13]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[14]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[15]
+  ;
+LOCATE UGROUP "ffarr0groupA"  SITE "R13C2D";
+#   UGROUP "ffarr0groupA1" BBOX 1 1
+#   BLKNAME THE_TDC/ffarr_0_0
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[1]
+#   ;
+# LOCATE UGROUP "ffarr0groupA1"  SITE "R13C2D";
+# 
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[8]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[9]
+# 
+# 
+# 
+# UGROUP "ffarr0groupA2" BBOX 1 1
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[2]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[3]
+#   ;
+# LOCATE UGROUP "ffarr0groupA2"  SITE "R13C3D";
+# 
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[10]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[11]
+# 
+# 
+# UGROUP "ffarr0groupA3" BBOX 1 1
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[4]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[5]
+#   ;
+# LOCATE UGROUP "ffarr0groupA3"  SITE "R14C2D";
+# 
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[12]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[13]
+# 
+# 
+# UGROUP "ffarr0groupA4" BBOX 1 1
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[6]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[7]
+#   ;
+# LOCATE UGROUP "ffarr0groupA4"  SITE "R14C3D";
+# 
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[14]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[15]
+
+  
+UGROUP "ffarr0groupB" BBOX 3 2 
+  BLKNAME THE_TDC/ffarr_1_0
+  BLKNAME THE_TDC/ffarr_2_0
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[1]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[1]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[2]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[2]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[3]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[3]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[4]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[4]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[5]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[5]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[6]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[6]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[7]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[7]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[8]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[8]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[9]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[9]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[10]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[10]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[11]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[11]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[12]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[12]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[13]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[13]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[14]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[14]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[15]
+  BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[15]
+  ;  
+  
+
+LOCATE UGROUP "ffarr0groupB"  SITE "R14C5D";
+
+# 
+# UGROUP "ffarr0groupAD" BBOX 2 2
+#   BLKNAME THE_TDC/ffarr_0_0[0]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[1]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[2]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[3]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[4]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[5]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[6]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[7]
+#   ;
+#   
+# UGROUP "ffarr0groupBD" BBOX 2 2  
+#   BLKNAME THE_TDC/ffarr_1_0[0]
+#   BLKNAME THE_TDC/ffarr_2_0[0]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[1]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[1]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[2]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[2]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[3]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[3]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[4]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[4]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[5]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[5]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[6]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[6]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[7]
+#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[7]
+#   ;  
+#   
+# LOCATE UGROUP "ffarr0groupAD"  SITE "R13C2D";
+# LOCATE UGROUP "ffarr0groupBD"  SITE "R13C4D";
