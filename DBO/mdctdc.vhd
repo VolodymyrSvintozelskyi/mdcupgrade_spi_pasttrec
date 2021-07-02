@@ -21,6 +21,8 @@ entity mdctdc is
     
     OUTP : in  std_logic_vector(31 downto 0);
     TEST : out std_logic_vector(3 downto 0);
+    INJ  : out std_logic_vector(3 downto 0);
+    PTEN : out std_logic_vector(2 downto 1);
 
     RSTN  : out std_logic_vector(2 downto 1);
     MISO  : in  std_logic_vector(2 downto 1);
@@ -70,6 +72,7 @@ architecture arch of mdctdc is
   signal med2int                     : med2int_array_t(0 to 0);
   signal int2med                     : int2med_array_t(0 to 0);
   signal med_stat_debug              : std_logic_vector (1*64-1 downto 0);
+  signal additional_reg              : std_logic_vector ( 31 downto 0);
   
 
   signal readout_rx                  : READOUT_RX;
@@ -143,9 +146,9 @@ begin
       TX_DLM_WORD => open,
 
       --SFP Connection
-      SD_PRSNT_N_IN  => GPIO(1),
-      SD_LOS_IN      => GPIO(1),
-      SD_TXDIS_OUT   => GPIO(0),
+      SD_PRSNT_N_IN  => GPIO(0),
+      SD_LOS_IN      => GPIO(0),
+      SD_TXDIS_OUT   => GPIO(1),
       --Control Interface
       BUS_RX        => bussci_rx,
       BUS_TX        => bussci_tx,
@@ -257,7 +260,8 @@ begin
       SPI_CLK_OUT(1 downto 0)       => SCK,
       --Header
       HEADER_IO         => open,
-      ADDITIONAL_REG(0) => led_off,
+      ADDITIONAL_REG    => additional_reg,
+
       --LCD
       LCD_DATA_IN       => (others => '0'),
       --ADC
@@ -284,6 +288,9 @@ begin
   FLASH_HOLD <= '1';
   FLASH_WP   <= '1';
 
+  led_off        <= additional_reg(0);
+  FLASH_OVERRIDE <= not additional_reg(1);  
+  
 ---------------------------------------------------------------------------
 -- I/O
 ---------------------------------------------------------------------------
@@ -297,6 +304,15 @@ begin
   LED(0) <= (med2int(0).stat_op(10) or med2int(0).stat_op(11)) and not led_off;
   LED(1) <= med2int(0).stat_op(9) and not led_off;
   LED(2) <= FLASH_SELECT and not led_off;
+
+  
+--------------------------------------------------------------------------
+-- Controls
+---------------------------------------------------------------------------
+  PTEN <= "11";
+  INJ  <= additional_reg(19 downto 16); --"0000";
+  TEST <= additional_reg(27 downto 24); --"0000";
+  
   
 -------------------------------------------------------------------------------
 -- TDC

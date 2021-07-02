@@ -4,7 +4,7 @@ impl -add workdir -type fpga
 
 # device options
 set_option -technology ECP5UM
-set_option -part LFE5UM_25F
+set_option -part LFE5UM_45F
 set_option -package BG381C
 set_option -speed_grade -8
 set_option -part_companion ""
@@ -51,8 +51,6 @@ impl -active "workdir"
 
 ####################
 
-add_file -vhdl -lib work "workdir/lattice-diamond/cae_library/synthesis/vhdl/ecp5um.vhd"
-
 #Packages
 add_file -vhdl -lib work "workdir/version.vhd"
 add_file -vhdl -lib work "config.vhd"
@@ -65,7 +63,7 @@ add_file -vhdl -lib work "../../dirich/cores/pll_240_100/pll_240_100.vhd"
 add_file -vhdl -lib work "../../dirich/code/clock_reset_handler.vhd"
 add_file -vhdl -lib work "../../trbnet/special/trb_net_reset_handler.vhd"
 add_file -vhdl -lib work "../../trbnet/special/spi_flash_and_fpga_reload_record.vhd"
-add_file -vhdl -lib work "../../dirich/code/sedcheck.vhd"
+add_file -vhdl -lib work "../../vhdlbasics/ecp5/sedcheck.vhd"
 
 
 #Fifos
@@ -134,15 +132,18 @@ add_file -vhdl -lib work "../../trbnet/media_interfaces/med_ecp5_sfp_sync.vhd"
 
 #########################################
 #channel 0, backplane
-add_file -vhdl -lib work "../../dirich/cores/serdes_sync_0.vhd"      
-add_file -verilog -lib work "../../dirich/cores/serdes_sync_0_softlogic.v"
+#add_file -vhdl -lib work "../../dirich/cores/serdes_sync_0.vhd"      
+#add_file -verilog -lib work "../../dirich/cores/serdes_sync_0_softlogic.v"
 
 #channel 1, SFP
 #add_file -vhdl -lib work "../cores/serdes_sync_0/serdes_sync_0.vhd"
 #add_file -verilog -lib work "../cores/serdes_sync_0/serdes_sync_0_softlogic.v"
 ##########################################
 
-add_file -vhdl -lib work "../../dirich/cores/pcs.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/ecp5/chan0_0/serdes_sync_0.vhd"      
+add_file -vhdl -lib work "../../trbnet/media_interfaces/ecp5/pcs.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/ecp5/pcs2.vhd"
+add_file -verilog -lib work "../../trbnet/media_interfaces/ecp5/serdes_sync_0_softlogic.v"
 
 #TrbNet Endpoint
 add_file -vhdl -lib work "../../trbnet/trb_net16_term_buf.vhd"
@@ -174,7 +175,7 @@ add_file -vhdl -lib work "../../trbnet/trb_net16_iobuf.vhd"
 add_file -vhdl -lib work "../../trbnet/trb_net16_io_multiplexer.vhd"
 add_file -vhdl -lib work "../../trbnet/trb_net16_trigger.vhd"
 add_file -vhdl -lib work "../../trbnet/trb_net16_ipudata.vhd"
-add_file -vhdl -lib work "../../trbnet/trb_net16_endpoint_hades_full.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_endpoint_hades_full_gbe.vhd"
 add_file -vhdl -lib work "../../trbnet/basics/signal_sync.vhd"
 add_file -vhdl -lib work "../../trbnet/basics/ram_dp_rw.vhd"
 add_file -vhdl -lib work "../../trbnet/basics/pulse_stretch.vhd"
@@ -191,9 +192,7 @@ add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_gstart.vhd"
 add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_sendb.vhd"
 add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_slim.vhd"
 
-
 add_file -vhdl -lib work "./mdctdc.vhd"
 #add_file -fpga_constraint "./synplify.fdc"
-
 
 

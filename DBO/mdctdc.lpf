@@ -13,143 +13,305 @@ FREQUENCY NET "med2int_0.clk_full" 200 MHz;
 MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_SCI_READER/PROC_SCI_CTRL.BUS_TX*" 10 ns;
 MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_MED_CONTROL/THE_TX/STAT_REG_OUT*" 10 ns;
 
-REGION               "MEDIA" "R81C44D" 13 25;
+REGION               "MEDIA" "R57C34D" 13 30;
 LOCATE UGROUP        "THE_MEDIA_INTERFACE/media_interface_group" REGION "MEDIA" ;
 
-# 
-# # UGROUP "INPGATE0" BBOX 1 1
-# #   BLKNAME THE_TDC/gen_channels.0.inpgate[0]
-# #   ;
-# # LOCATE UGROUP "INPGATE0"  SITE "R14C4D";
-# 
-# UGROUP "ffarr0groupA" BBOX 3 3
-#   BLKNAME THE_TDC/ffarr_0_0
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[1]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[2]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[3]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[4]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[5]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[6]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[7]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[8]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[9]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[10]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[11]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[12]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[13]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[14]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[15]
-#   ;
-# LOCATE UGROUP "ffarr0groupA"  SITE "R13C2D";
-#   UGROUP "ffarr0groupA1" BBOX 1 1
-#   BLKNAME THE_TDC/ffarr_0_0
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[1]
-#   ;
-# LOCATE UGROUP "ffarr0groupA1"  SITE "R13C2D";
-# 
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[8]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[9]
-# 
-# 
-# 
-# UGROUP "ffarr0groupA2" BBOX 1 1
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[2]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[3]
-#   ;
-# LOCATE UGROUP "ffarr0groupA2"  SITE "R13C3D";
-# 
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[10]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[11]
-# 
-# 
-# UGROUP "ffarr0groupA3" BBOX 1 1
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[4]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[5]
-#   ;
-# LOCATE UGROUP "ffarr0groupA3"  SITE "R14C2D";
-# 
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[12]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[13]
-# 
-# 
-# UGROUP "ffarr0groupA4" BBOX 1 1
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[6]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[7]
-#   ;
-# LOCATE UGROUP "ffarr0groupA4"  SITE "R14C3D";
-# 
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[14]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[15]
+UGROUP "TDC0" BBOX 1 2
+        BLKNAME GND;
+        
+UGROUP "TDC1" BBOX 1 2
+        BLKNAME GND;
+        
+UGROUP "TDC2" BBOX 1 2
+        BLKNAME GND;
 
-  
-# UGROUP "ffarr0groupB" BBOX 3 2 
-#   BLKNAME THE_TDC/ffarr_1_0
-#   BLKNAME THE_TDC/ffarr_2_0
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[1]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[1]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[2]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[2]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[3]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[3]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[4]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[4]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[5]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[5]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[6]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[6]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[7]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[7]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[8]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[8]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[9]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[9]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[10]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[10]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[11]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[11]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[12]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[12]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[13]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[13]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[14]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[14]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[15]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[15]
-#   ;  
-#   
-# 
-# LOCATE UGROUP "ffarr0groupB"  SITE "R14C5D";
+UGROUP "TDC3" BBOX 1 2
+        BLKNAME GND;
 
-# 
-# UGROUP "ffarr0groupAD" BBOX 2 2
-#   BLKNAME THE_TDC/ffarr_0_0[0]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[1]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[2]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[3]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[4]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[5]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[6]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_0_0[7]
-#   ;
-#   
-# UGROUP "ffarr0groupBD" BBOX 2 2  
-#   BLKNAME THE_TDC/ffarr_1_0[0]
-#   BLKNAME THE_TDC/ffarr_2_0[0]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[1]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[1]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[2]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[2]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[3]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[3]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[4]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[4]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[5]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[5]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[6]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[6]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_1_0[7]
-#   BLKNAME THE_TDC/gen_channels.0.gen_ffarr_first.0.ffarr_2_0[7]
-#   ;  
-#   
-# LOCATE UGROUP "ffarr0groupAD"  SITE "R13C2D";
-# LOCATE UGROUP "ffarr0groupBD"  SITE "R13C4D";
+UGROUP "TDC4" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC5" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC6" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC7" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC8" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC9" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC10" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC11" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC12" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC13" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC14" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC15" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC16" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC17" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC18" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC19" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC20" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC21" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC22" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC23" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC24" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC25" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC26" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC27" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC28" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC29" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC30" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC31" BBOX 1 2
+        BLKNAME GND;
+        
+UGROUP "TDC32" BBOX 1 2
+        BLKNAME GND;
+        
+
+
+LOCATE UGROUP "TDC0"  SITE "R59C86D" ;
+LOCATE UGROUP "TDC0s" SITE "R59C84D" ;
+
+LOCATE UGROUP "TDC1"  SITE "R62C86D" ;
+LOCATE UGROUP "TDC1s" SITE "R62C84D" ;
+
+LOCATE UGROUP "TDC2"  SITE "R63C86D" ;
+LOCATE UGROUP "TDC2s" SITE "R63C84D" ;
+
+LOCATE UGROUP "TDC3"  SITE "R36C86D" ;
+LOCATE UGROUP "TDC3s" SITE "R36C84D" ;
+
+LOCATE UGROUP "TDC4"  SITE "R42C86D" ;
+LOCATE UGROUP "TDC4s" SITE "R42C84D" ;
+
+LOCATE UGROUP "TDC5"  SITE "R68C86D" ;
+LOCATE UGROUP "TDC5s" SITE "R68C84D" ;
+
+LOCATE UGROUP "TDC6"  SITE "R65C86D" ;
+LOCATE UGROUP "TDC6s" SITE "R65C84D" ;
+
+LOCATE UGROUP "TDC7"  SITE "R45C86D" ;
+LOCATE UGROUP "TDC7s" SITE "R45C84D" ;
+
+LOCATE UGROUP "TDC8"  SITE "R29C86D" ;
+LOCATE UGROUP "TDC8s" SITE "R29C84D" ;
+
+LOCATE UGROUP "TDC9"  SITE "R26C86D" ;
+LOCATE UGROUP "TDC9s" SITE "R26C84D" ;
+
+LOCATE UGROUP "TDC10"  SITE "R32C86D" ;
+LOCATE UGROUP "TDC10s" SITE "R32C84D" ;
+
+LOCATE UGROUP "TDC11"  SITE "R25C86D" ;
+LOCATE UGROUP "TDC11s" SITE "R25C84D" ;
+
+LOCATE UGROUP "TDC12"  SITE "R32C86D" ;
+LOCATE UGROUP "TDC12s" SITE "R32C84D" ;
+
+LOCATE UGROUP "TDC13"  SITE "R23C86D" ;
+LOCATE UGROUP "TDC13s" SITE "R23C84D" ;
+
+LOCATE UGROUP "TDC14"  SITE "R36C86D" ;
+LOCATE UGROUP "TDC14s" SITE "R36C84D" ;
+
+LOCATE UGROUP "TDC15"  SITE "R14C86D" ;
+LOCATE UGROUP "TDC15s" SITE "R14C84D" ;
+
+LOCATE UGROUP "TDC16"  SITE "R62C3D" ;
+LOCATE UGROUP "TDC16s" SITE "R62C5D" ;
+
+LOCATE UGROUP "TDC17"  SITE "R65C3D" ;
+LOCATE UGROUP "TDC17s" SITE "R65C5D" ;
+
+LOCATE UGROUP "TDC18"  SITE "R41C3D" ;
+LOCATE UGROUP "TDC18s" SITE "R41C5D" ;
+
+LOCATE UGROUP "TDC19"  SITE "R68C3D" ;
+LOCATE UGROUP "TDC19s" SITE "R68C5D" ;
+
+LOCATE UGROUP "TDC20"  SITE "R63C3D" ;
+LOCATE UGROUP "TDC20s" SITE "R63C5D" ;
+
+LOCATE UGROUP "TDC21"  SITE "R38C3D" ;
+LOCATE UGROUP "TDC21s" SITE "R38C5D" ;
+
+LOCATE UGROUP "TDC22"  SITE "R36C3D" ;
+LOCATE UGROUP "TDC22s" SITE "R36C5D" ;
+
+LOCATE UGROUP "TDC23"  SITE "R35C3D" ;
+LOCATE UGROUP "TDC23s" SITE "R35C5D" ;
+
+LOCATE UGROUP "TDC24"  SITE "R12C3D" ;
+LOCATE UGROUP "TDC24s" SITE "R12C5D" ;
+
+LOCATE UGROUP "TDC25"  SITE "R11C3D" ;
+LOCATE UGROUP "TDC25s" SITE "R11C5D" ;
+
+LOCATE UGROUP "TDC26"  SITE "R32C3D" ;
+LOCATE UGROUP "TDC26s" SITE "R32C5D" ;
+
+LOCATE UGROUP "TDC27"  SITE "R14C3D" ;
+LOCATE UGROUP "TDC27s" SITE "R14C5D" ;
+
+LOCATE UGROUP "TDC28"  SITE "R26C3D" ;
+LOCATE UGROUP "TDC28s" SITE "R26C5D" ;
+
+LOCATE UGROUP "TDC29"  SITE "R15C3D" ;
+LOCATE UGROUP "TDC29s" SITE "R15C5D" ;
+
+LOCATE UGROUP "TDC30"  SITE "R17C3D" ;
+LOCATE UGROUP "TDC30s" SITE "R17C5D" ;
+
+LOCATE UGROUP "TDC31"  SITE "R23C3D" ;
+LOCATE UGROUP "TDC31s" SITE "R23C5D" ;
+
+LOCATE UGROUP "TDC32"  SITE "R12C86D" ;
+LOCATE UGROUP "TDC32s" SITE "R12C84D" ;
+
+
+UGROUP "TDC0s" BBOX 1 2
+        BLKNAME GND;
+        
+UGROUP "TDC1s" BBOX 1 2
+        BLKNAME GND;
+        
+UGROUP "TDC2s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC3s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC4s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC5s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC6s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC7s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC8s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC9s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC10s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC11s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC12s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC13s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC14s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC15s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC16s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC17s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC18s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC19s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC20s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC21s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC22s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC23s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC24s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC25s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC26s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC27s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC28s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC29s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC30s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC31s" BBOX 1 2
+        BLKNAME GND;
+
+UGROUP "TDC32s" BBOX 1 2
+        BLKNAME GND;

@@ -16,7 +16,7 @@ package config is
 
 --TDC settings
   constant FPGA_TYPE               : integer  := 5;  --3: ECP3, 5: ECP5
-  constant FPGA_SIZE               : string := "25KUM";
+  constant FPGA_SIZE               : string := "45KUM";
   constant NUM_TDC_CHANNELS        : integer range 1 to 65 := 33;  -- number of tdc channels per module
   constant NUM_TDC_CHANNELS_POWER2 : integer range 0 to 6  := 5;  --the nearest power of two, for convenience reasons 
 
@@ -39,7 +39,7 @@ package config is
 
     --input monitor and trigger generation logic
     constant INCLUDE_TRIGGER_LOGIC  : integer  := c_NO; --400 slices @32->2
-    constant INCLUDE_STATISTICS     : integer  := c_NO; --1300 slices, 1 RAM @32
+    constant INCLUDE_STATISTICS     : integer  := c_YES; --1300 slices, 1 RAM @32
     constant TRIG_GEN_INPUT_NUM     : integer  := 32;
     constant TRIG_GEN_OUTPUT_NUM    : integer  := 4;
     constant MONITOR_INPUT_NUM      : integer  := 32;        
@@ -57,7 +57,7 @@ package config is
 ------------------------------------------------------------------------------
     type intlist_t is array(0 to 7) of integer;
     type hw_info_t is array(0 to 7) of unsigned(31 downto 0);
-    constant HW_INFO_BASE            : unsigned(31 downto 0) := x"A6100000";
+    constant HW_INFO_BASE            : unsigned(31 downto 0) := x"A7000000";
     
             
   --declare constants, filled in body                          
