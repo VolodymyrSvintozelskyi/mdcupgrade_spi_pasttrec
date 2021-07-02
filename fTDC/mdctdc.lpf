@@ -1,0 +1,46 @@
+#################################################################
+# Basic Settings
+#################################################################
+
+FREQUENCY PORT CLK       200 MHz;
+FREQUENCY PORT CLK_TDC   156.25 MHz;
+BLOCK PATH TO   PORT "LED*";
+BLOCK PATH TO   PORT "PROGRAMN";
+
+FREQUENCY NET "THE_MEDIA_INTERFACE/gen_pcs0.THE_SERDES/serdes_sync_0_inst/clk_tx_full" 200 MHz;
+FREQUENCY NET "med2int_0.clk_full" 200 MHz;
+
+MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_SCI_READER/PROC_SCI_CTRL.BUS_TX*" 10 ns;
+MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_MED_CONTROL/THE_TX/STAT_REG_OUT*" 10 ns;
+
+REGION               "MEDIA" "R81C44D" 13 25;
+LOCATE UGROUP        "THE_MEDIA_INTERFACE/media_interface_group" REGION "MEDIA" ;
+
+
+#############################################################################
+## Stretcher
+#############################################################################
+UGROUP "Stretcher_A1" BBOX 6 8
+        BLKNAME The_Spike_Rejection/Stretcher_A
+;
+LOCATE UGROUP "Stretcher_A1" SITE "R2C81D";
+
+UGROUP "Stretcher_B1" BBOX 8 10
+        BLKNAME The_Spike_Rejection/Stretcher_B
+        BLKNAME The_Spike_Rejection/GEN.1.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.2.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.3.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.4.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.5.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.6.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.7.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.8.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.9.THE_GATE
+        BLKNAME The_Spike_Rejection/GEN.10.THE_GATE
+;
+LOCATE UGROUP "Stretcher_B1" SITE "R2C2D";
+
+
+
+#BLOCK NET "hit_in_tdc*";
+#BLOCK NET "hit_in_i*";
