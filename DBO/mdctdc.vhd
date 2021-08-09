@@ -55,6 +55,7 @@ entity mdctdc is
   attribute syn_useioff of FLASH_SCLK : signal is true;
   attribute syn_useioff of FLASH_MOSI : signal is true;
   attribute syn_useioff of FLASH_MISO : signal is true;
+  attribute syn_useioff of OUTP       : signal is false;
 
 
 end entity;
@@ -76,7 +77,7 @@ architecture arch of mdctdc is
   
 
   signal readout_rx                  : READOUT_RX;
-  signal readout_tx                  : readout_tx_array_t(0 to 0);
+  signal readout_tx                  : readout_tx_array_t(0 to 1);
 
   signal ctrlbus_tx, bustdc_tx, bussci_tx, bustools_tx, bustc_tx, bus_master_in  : CTRLBUS_TX;
   signal ctrlbus_rx, bustdc_rx, bussci_rx, bustools_rx, bustc_rx, bus_master_out : CTRLBUS_RX;
@@ -90,9 +91,12 @@ architecture arch of mdctdc is
   signal timer            : TIMERS;
   signal led_off          : std_logic;
   --TDC
-  signal hit_in_i         : std_logic_vector(NUM_TDC_CHANNELS-1 downto 1);
+  signal hit_in_i         : std_logic_vector(31 downto 0);
   signal monitor_inputs_i : std_logic_vector(MONITOR_INPUT_NUM-1 downto 0);
   signal trigger_inputs_i : std_logic_vector(TRIG_GEN_INPUT_NUM-1 downto 0);
+  signal calibration_pulse: std_logic;
+  
+  signal dummy_i : std_logic;
   
 begin
 
@@ -168,7 +172,7 @@ begin
       REGIO_USE_1WIRE_INTERFACE => c_I2C,
       TIMING_TRIGGER_RAW        => c_YES,
       --Configure data handler
-      DATA_INTERFACE_NUMBER     => 1,
+      DATA_INTERFACE_NUMBER     => 2,
       DATA_BUFFER_DEPTH         => EVENT_BUFFER_SIZE,
       DATA_BUFFER_WIDTH         => 32,
       DATA_BUFFER_FULL_THRESH   => 2**EVENT_BUFFER_SIZE-EVENT_MAX_SIZE,
@@ -296,14 +300,13 @@ begin
 ---------------------------------------------------------------------------
   monitor_inputs_i <= OUTP(MONITOR_INPUT_NUM-1 downto 0);
   trigger_inputs_i <= OUTP(TRIG_GEN_INPUT_NUM-1 downto 0);
-  hit_in_i         <= OUTP(NUM_TDC_CHANNELS-2 downto 0);
-  
+  hit_in_i <= OUTP;
 ---------------------------------------------------------------------------
 -- LED
 ---------------------------------------------------------------------------
   LED(0) <= (med2int(0).stat_op(10) or med2int(0).stat_op(11)) and not led_off;
   LED(1) <= med2int(0).stat_op(9) and not led_off;
-  LED(2) <= FLASH_SELECT and not led_off;
+  LED(2) <= (LVDS(1) or LVDS(0) or dummy_i or FLASH_SELECT) and not led_off;
 
   
 --------------------------------------------------------------------------
@@ -311,39 +314,41 @@ begin
 ---------------------------------------------------------------------------
   PTEN <= "11";
   INJ  <= additional_reg(19 downto 16); --"0000";
-  TEST <= additional_reg(27 downto 24); --"0000";
+  TEST <= additional_reg(27 downto 24) or (calibration_pulse & calibration_pulse & calibration_pulse & calibration_pulse); --"0000";
   
   
 -------------------------------------------------------------------------------
 -- TDC
 -------------------------------------------------------------------------------
--- THE_TDC : entity work.TDC_FF
---   generic map(
---     CHANNELS => 17
---     )
---   port map(
---     CLK        => CLK_125,
---     SYSCLK     => clk_sys,
---     RESET_IN   => reset_i,
---     SIGNAL_IN  => INP(16 downto 0),
---     
---     BUS_RX => bustdc_rx,
---     BUS_TX => bustdc_tx,
--- 
---     READOUT_RX => readout_rx,
---     READOUT_TX => readout_tx  
---     
---     );
--- 
--- 
+THE_TDC : entity work.TDC_FF
+
+  port map(
+    CLK_FAST   => CLK_TDC,
+    CLK_SYS    => clk_sys,
+    RESET_IN   => reset_i,
+    SIGNAL_IN  => hit_in_i(31 downto 0),
+    TRIGGER_IN => TRG,
+    CALIBRATION_OUT => calibration_pulse,
+    
+    BUS_RX => bustdc_rx,
+    BUS_TX => bustdc_tx,
+
+    READOUT_RX => readout_rx,
+    READOUT_TX => readout_tx(0 to 1),
+    
+    DUMMY => dummy_i
+    
+    );
+
+
 
 
 -------------------------------------------------------------------------------
 -- No trigger/data endpoint included
 -------------------------------------------------------------------------------
-readout_tx(0).data_finished <= '1';
-readout_tx(0).data_write    <= '0';
-readout_tx(0).busy_release  <= '1';    
+-- readout_tx(0).data_finished <= '1';
+-- readout_tx(0).data_write    <= '0';
+-- readout_tx(0).busy_release  <= '1';    
   
 end architecture;
 

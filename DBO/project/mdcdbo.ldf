@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BaliProject version="3.2" title="mdctdc" device="LFE5UM-45F-8BG381C" default_implementation="mdctdc">
+    <Options/>
+    <Implementation title="mdctdc" dir="mdctdc" description="Automatically generated implemenatation" synthesis="synplify" default_strategy="Strategy1">
+        <Options def_top="mdctdc" top="mdctdc"/>
+        <Source name="../workdir/lattice-diamond/cae_library/synthesis/vhdl/ecp5um.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../workdir/version.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../config.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3/base/trb3_components.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_std.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_components.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../dirich/cores/pll_240_100/pll_240_100.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../dirich/code/clock_reset_handler.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/trb_net_reset_handler.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/spi_flash_and_fpga_reload_record.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../vhdlbasics/ecp5/sedcheck.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/trb_net16_fifo_arch.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/RAM/spi_dpram_32_to_8/spi_dpram_32_to_8.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_18x1k/lattice_ecp5_fifo_18x1k.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_16bit_dualport/lattice_ecp5_fifo_16bit_dualport.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/trb_net_fifo_16bit_bram_dualport.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp3/lattice_ecp2m_fifo.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x256_oreg/fifo_36x256_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x512_oreg/fifo_36x512_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x1k_oreg/fifo_36x1k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x2k_oreg/fifo_36x2k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x4k_oreg/fifo_36x4k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x8k_oreg/fifo_36x8k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x16k_oreg/fifo_36x16k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_36x32k_oreg/fifo_36x32k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_18x256_oreg/fifo_18x256_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_18x512_oreg/fifo_18x512_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_18x1k_oreg/fifo_18x1k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_18x2k_oreg/fifo_18x2k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_9x2k_oreg/fifo_9x2k_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp2m/fifo/fifo_var_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/fifo_19x16_obuf/fifo_19x16_obuf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_16x16_dualport/lattice_ecp5_fifo_16x16_dualport.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_18x16_dualport/lattice_ecp5_fifo_18x16_dualport.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/lattice/ecp5/FIFO/lattice_ecp3_fifo_18x16_dualport_oreg/lattice_ecp3_fifo_18x16_dualport_oreg.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/slv_register.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/spi_master.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/spi_slim.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/spi_databus_memory.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/fpga_reboot.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3sc/code/trb3sc_tools.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3sc/code/lcd.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3sc/code/debuguart.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/uart.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/uart_rec.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/uart_trans.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/spi_ltc2600.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/optical_link/f_divider.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3sc/code/load_settings.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3sc/code/spi_master_generic.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3/base/code/input_to_trigger_logic_record.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trb3/base/code/input_statistics.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_regio_bus_handler.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_regio_bus_handler_record.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_regIO.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_onewire.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_addresses.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/sync/med_sync_define.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/sync/rx_control.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/sync/tx_control.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/sync/rx_reset_fsm.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/sync/tx_reset_fsm.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/sync/sci_reader.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/sync/med_sync_control.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/med_ecp5_sfp_sync.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/ecp5/chan0_0/serdes_sync_0.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/ecp5/pcs.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/ecp5/pcs2.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/media_interfaces/ecp5/serdes_sync_0_softlogic.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_term_buf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_CRC.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_CRC8.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/rom_16x8.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/ram.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/pulse_sync.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/state_sync.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/ram_16x8_dp.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/ram_16x16_dp.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/ram_dp.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_term.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_sbuf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_sbuf5.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_sbuf6.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_sbuf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_priority_encoder.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_dummy_fifo.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_dummy_fifo.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_term_ibuf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_priority_arbiter.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net_pattern_gen.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_obuf_nodata.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_obuf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_ibuf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_api_base.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_iobuf.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_io_multiplexer.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_trigger.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_ipudata.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_endpoint_hades_full_gbe.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/signal_sync.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/ram_dp_rw.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/basics/pulse_stretch.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/handler_lvl1.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/handler_data.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/handler_ipu.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/handler_trigger_and_data.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/trb_net16_endpoint_hades_full_handler_record.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/bus_register_handler.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../trbnet/special/trb_net_i2cwire.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../vhdlbasics/interface/i2c_gstart.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../vhdlbasics/interface/i2c_sendb.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../../../vhdlbasics/interface/i2c_slim.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work"/>
+        </Source>
+        <Source name="../mdctdc.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="work" top_module="mdctdc"/>
+        </Source>
+        <Source name="../../cores/PLL_TDC/PLL_TDC.sbx" type="sbx" type_short="SBX">
+            <Options/>
+        </Source>
+        <Source name="../../../clocked_tdc/code/ChannelRegs.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../clocked_tdc/code/FFregs.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../clocked_tdc/code/TDC_FF.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../clocked_tdc/code/FFregs2.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="untitled.lpf" type="Logic Preference" type_short="LPF" excluded="TRUE">
+            <Options/>
+        </Source>
+        <Source name="../workdir/mdctdc.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="auto_strat.sty"/>
+</BaliProject>

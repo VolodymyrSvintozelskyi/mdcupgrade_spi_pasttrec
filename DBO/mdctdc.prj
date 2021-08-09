@@ -14,6 +14,7 @@ set_option -default_enum_encoding sequential
 set_option -symbolic_fsm_compiler 1
 set_option -top_module "mdctdc"
 set_option -resource_sharing false
+set_option -vhdl2008 true
 
 # map options
 set_option -frequency 120
@@ -91,7 +92,9 @@ add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_19x16_obuf/fifo_19
 add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_16x16_dualport/lattice_ecp5_fifo_16x16_dualport.vhd"
 add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_18x16_dualport/lattice_ecp5_fifo_18x16_dualport.vhd"
 add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp3_fifo_18x16_dualport_oreg/lattice_ecp3_fifo_18x16_dualport_oreg.vhd"
-
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x32_oreg/fifo_36x32_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x32/fifo_36x32.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x512_dualport_oreg/fifo_36x512_dualport_oreg.vhd"
 
 #Flash & Reload, Tools
 add_file -vhdl -lib work "../../trbnet/special/slv_register.vhd"
@@ -191,6 +194,19 @@ add_file -vhdl -lib work "../../trbnet/special/trb_net_i2cwire.vhd"
 add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_gstart.vhd"
 add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_sendb.vhd"
 add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_slim.vhd"
+
+add_file -vhdl -lib work "../../clocked_tdc/code/clocked_tdc_pkg.vhd"
+add_file -vhdl -lib work "../cores/PLL_TDC/PLL_TDC.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/TDC_FF.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/ChannelRegs.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/FFregs.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/FFregs2.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/InpLut.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/Decoder.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/HitBuffer.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/ReadoutHandler.vhd"
+
+
 
 add_file -vhdl -lib work "./mdctdc.vhd"
 #add_file -fpga_constraint "./synplify.fdc"
