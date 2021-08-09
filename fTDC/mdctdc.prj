@@ -14,6 +14,7 @@ set_option -default_enum_encoding sequential
 set_option -symbolic_fsm_compiler 1
 set_option -top_module "mdctdc"
 set_option -resource_sharing false
+set_option -vhdl2008 true
 
 # map options
 set_option -frequency 120
