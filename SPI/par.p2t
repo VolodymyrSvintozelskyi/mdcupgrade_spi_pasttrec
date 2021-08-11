@@ -1,0 +1,69 @@
+-w
+#-y
+-l 5
+#-m nodelist.txt	# Controlled by the compile.pl script.
+#-n 1  			# Controlled by the compile.pl script.
+-s 10
+-t 2
+-c 2
+-e 2
+-i 10
+#-exp parPlcInLimit=0
+#-exp parPlcInNeighborSize=1
+#General PAR Command Line Options
+#  -w	  With this option, any files generated will overwrite existing files
+#  	  (e.g., any .par, .pad files).
+#  -y	  Adds the Delay Summary Report in the .par file and creates the delay
+#  	  file (in .dly format) at the end of the par run.
+#
+#PAR Placement Command Line Options
+#  -l	  Specifies the effort level of the design from 1 (simplest designs)
+#  	  to 5 (most complex designs).
+#  -m     Multi-tasking option. Controlled by the compile.pl script.
+#  -n	  Sets the number of iterations performed at the effort level
+#  	  specified by the -l option. Controlled by the compile.pl script.
+#  -s     Save the number of best results for this run.
+#  -t 	  Start placement at the specified cost table. Default is 1.
+#
+#PAR Routing Command Line Options
+#  -c 	  Run number of cost-based cleanup passes of the router.
+#  -e 	  Run number of delay-based cleanup passes of the router on
+#  	  completely-routed designs only.
+#  -i 	  Run a maximum number of passes, stopping earlier only if the routing
+#  	  goes to 100 percent completion and all constraints are met.
+#
+#PAR Explorer Command Line Options
+#  parCDP     	      Enable the congestion-driven placement (CDP) algorithm. CDP is
+#  	      	      compatible with all Lattice FPGA device families; however, most
+#	      	      benefit has been demonstrated with benchmarks targeted to ECP5,
+#	      	      LatticeECP2/M, LatticeECP3, and LatticeXP2 device families.
+#  parCDR     	      Enable the congestion-driven router (CDR) algorithm.
+#  	      	      Congestion-driven options like parCDR and parCDP can improve
+#		      performance given a design with multiple congestion “hotspots.” The
+#	      	      Layer > Congestion option of the Design Planner Floorplan View can
+#	      	      help visualize routing congestion. Large congested areas may prevent
+#	      	      the options from finding a successful solution.
+#	      	      CDR is compatible with all Lattice FPGA device families however most
+#	      	      benefit has been demonstrated with benchmarks targeted to ECP5,
+#	      	      LatticeECP2/M,LatticeECP3, and LatticeXP2 device families. 
+#  paruseNBR  	      NBR Router or Negotiation-based routing option. Supports all
+#  	      	      FPGA device families except LatticeXP and MachXO.
+#	      	      When turned on, an alternate routing engine from the traditional
+#	      	      Rip-up-based routing selection (RBR) is used. This involves an
+#	      	      iterative routing algorithm that routes connections to achieve
+#	      	      minimum delay cost. It does so by computing the demand on each
+#	      	      routing resource and applying cost values per node. It will
+#	      	      complete when an optimal solution is arrived at or the number of
+#	      	      iterations is reached.
+#  parPathBased	      Path-based placement option. Path-based timing driven
+#  		      placement will yield better performance and more
+#		      predictable results in many cases. 
+#  parHold	      Additional hold time correction option. This option
+#  		      forces the router to automatically insert extra wires to compensate for the
+#		      hold time violation. 
+#  parHoldLimit	      This option allows you to set a limit on the number of
+#  		      hold time violations to be processed by the auto hold time correction option
+#		      parHold. 
+#  parPlcInLimit      	       Cannot find in the online help
+#  parPlcInNeighborSize        Cannot find in the online help
+-exp parHold=ON:parHoldLimit=10000:parCDP=1:parCDR=1:parPathBased=OFF:paruseNBR=1

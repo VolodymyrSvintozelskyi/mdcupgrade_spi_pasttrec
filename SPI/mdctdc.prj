@@ -1,0 +1,214 @@
+
+# implementation: "workdir"
+impl -add workdir -type fpga
+
+# device options
+set_option -technology ECP5UM
+set_option -part LFE5UM_45F
+set_option -package BG381C
+set_option -speed_grade -8
+set_option -part_companion ""
+
+# compilation/mapping options
+set_option -default_enum_encoding sequential
+set_option -symbolic_fsm_compiler 1
+set_option -top_module "mdctdc"
+set_option -resource_sharing false
+set_option -vhdl2008 true
+
+# map options
+set_option -frequency 120
+set_option -fanout_limit 100
+set_option -disable_io_insertion 0
+set_option -retiming 1
+set_option -pipe 1
+set_option -forcegsr false
+set_option -fixgatedclocks 3
+set_option -fixgeneratedclocks 3
+set_option -compiler_compatible true
+set_option -multi_file_compilation_unit 1
+
+set_option -max_parallel_jobs 3
+#set_option -automatic_compile_point 1
+#set_option -continue_on_error 1
+set_option -resolve_multiple_driver 1
+
+# simulation options
+set_option -write_verilog 0
+set_option -write_vhdl 1
+
+# automatic place and route (vendor) options
+set_option -write_apr_constraint 0
+
+# set result format/file last
+project -result_format "edif"
+project -result_file "workdir/mdctdc.edf"
+set_option log_file "workdir/mdctdc.srf" 
+#implementation attributes
+
+set_option -vlog_std v2001
+set_option -project_relative_includes 1
+impl -active "workdir"
+
+####################
+
+#Packages
+add_file -vhdl -lib work "workdir/version.vhd"
+add_file -vhdl -lib work "config.vhd"
+add_file -vhdl -lib work "../../trb3/base/trb3_components.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_std.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_components.vhd"
+
+#Basic Infrastructure
+add_file -vhdl -lib work "../../dirich/cores/pll_240_100/pll_240_100.vhd"
+add_file -vhdl -lib work "../../dirich/code/clock_reset_handler.vhd"
+add_file -vhdl -lib work "../../trbnet/special/trb_net_reset_handler.vhd"
+add_file -vhdl -lib work "../../trbnet/special/spi_flash_and_fpga_reload_record.vhd"
+add_file -vhdl -lib work "../../vhdlbasics/ecp5/sedcheck.vhd"
+
+
+#Fifos
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/trb_net16_fifo_arch.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/RAM/spi_dpram_32_to_8/spi_dpram_32_to_8.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_18x1k/lattice_ecp5_fifo_18x1k.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_16bit_dualport/lattice_ecp5_fifo_16bit_dualport.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/trb_net_fifo_16bit_bram_dualport.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp3/lattice_ecp2m_fifo.vhd" 
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x256_oreg/fifo_36x256_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x512_oreg/fifo_36x512_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x1k_oreg/fifo_36x1k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x2k_oreg/fifo_36x2k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x4k_oreg/fifo_36x4k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x8k_oreg/fifo_36x8k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x16k_oreg/fifo_36x16k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x32k_oreg/fifo_36x32k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_18x256_oreg/fifo_18x256_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_18x512_oreg/fifo_18x512_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_18x1k_oreg/fifo_18x1k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_18x2k_oreg/fifo_18x2k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_9x2k_oreg/fifo_9x2k_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp2m/fifo/fifo_var_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_19x16_obuf/fifo_19x16_obuf.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_16x16_dualport/lattice_ecp5_fifo_16x16_dualport.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp5_fifo_18x16_dualport/lattice_ecp5_fifo_18x16_dualport.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/lattice_ecp3_fifo_18x16_dualport_oreg/lattice_ecp3_fifo_18x16_dualport_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x32_oreg/fifo_36x32_oreg.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x32/fifo_36x32.vhd"
+add_file -vhdl -lib work "../../trbnet/lattice/ecp5/FIFO/fifo_36x512_dualport_oreg/fifo_36x512_dualport_oreg.vhd"
+
+#Flash & Reload, Tools
+add_file -vhdl -lib work "../../trbnet/special/slv_register.vhd"
+add_file -vhdl -lib work "../../trbnet/special/spi_master.vhd"
+add_file -vhdl -lib work "../../trbnet/special/spi_slim.vhd"
+add_file -vhdl -lib work "../../trbnet/special/spi_databus_memory.vhd"
+add_file -vhdl -lib work "../../trbnet/special/fpga_reboot.vhd"
+add_file -vhdl -lib work "../../trb3sc/code/trb3sc_tools.vhd"
+add_file -vhdl -lib work "../../trb3sc/code/lcd.vhd"
+add_file -vhdl -lib work "../../trb3sc/code/debuguart.vhd"
+add_file -vhdl -lib work "../../trbnet/special/uart.vhd"
+add_file -vhdl -lib work "../../trbnet/special/uart_rec.vhd"
+add_file -vhdl -lib work "../../trbnet/special/uart_trans.vhd"
+add_file -vhdl -lib work "../../trbnet/special/spi_ltc2600.vhd"
+add_file -vhdl -lib work "../../trbnet/optical_link/f_divider.vhd"
+add_file -vhdl -lib work "../../trb3sc/code/load_settings.vhd"
+add_file -vhdl -lib work "../../trb3sc/code/spi_master_generic.vhd"
+add_file -vhdl -lib work "../../trb3/base/code/input_to_trigger_logic_record.vhd"
+add_file -vhdl -lib work "../../trb3/base/code/input_statistics.vhd"
+
+#SlowControl files
+add_file -vhdl -lib work "../../trbnet/trb_net16_regio_bus_handler.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_regio_bus_handler_record.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_regIO.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_onewire.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_addresses.vhd"
+
+#Media interface
+add_file -vhdl -lib work "../../trbnet/media_interfaces/sync/med_sync_define.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/sync/rx_control.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/sync/tx_control.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/sync/rx_reset_fsm.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/sync/tx_reset_fsm.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/sync/sci_reader.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/sync/med_sync_control.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/med_ecp5_sfp_sync.vhd"
+
+
+#########################################
+#channel 0, backplane
+#add_file -vhdl -lib work "../../dirich/cores/serdes_sync_0.vhd"      
+#add_file -verilog -lib work "../../dirich/cores/serdes_sync_0_softlogic.v"
+
+#channel 1, SFP
+#add_file -vhdl -lib work "../cores/serdes_sync_0/serdes_sync_0.vhd"
+#add_file -verilog -lib work "../cores/serdes_sync_0/serdes_sync_0_softlogic.v"
+##########################################
+
+add_file -vhdl -lib work "../../trbnet/media_interfaces/ecp5/chan0_0/serdes_sync_0.vhd"      
+add_file -vhdl -lib work "../../trbnet/media_interfaces/ecp5/pcs.vhd"
+add_file -vhdl -lib work "../../trbnet/media_interfaces/ecp5/pcs2.vhd"
+add_file -verilog -lib work "../../trbnet/media_interfaces/ecp5/serdes_sync_0_softlogic.v"
+
+#TrbNet Endpoint
+add_file -vhdl -lib work "../../trbnet/trb_net16_term_buf.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_CRC.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_CRC8.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/rom_16x8.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/ram.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/pulse_sync.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/state_sync.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/ram_16x8_dp.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/ram_16x16_dp.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/ram_dp.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_term.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_sbuf.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_sbuf5.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_sbuf6.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_sbuf.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_priority_encoder.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_dummy_fifo.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_dummy_fifo.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_term_ibuf.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_priority_arbiter.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net_pattern_gen.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_obuf_nodata.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_obuf.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_ibuf.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_api_base.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_iobuf.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_io_multiplexer.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_trigger.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_ipudata.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_endpoint_hades_full_gbe.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/signal_sync.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/ram_dp_rw.vhd"
+add_file -vhdl -lib work "../../trbnet/basics/pulse_stretch.vhd"
+
+add_file -vhdl -lib work "../../trbnet/special/handler_lvl1.vhd"
+add_file -vhdl -lib work "../../trbnet/special/handler_data.vhd"
+add_file -vhdl -lib work "../../trbnet/special/handler_ipu.vhd"
+add_file -vhdl -lib work "../../trbnet/special/handler_trigger_and_data.vhd"
+add_file -vhdl -lib work "../../trbnet/trb_net16_endpoint_hades_full_handler_record.vhd"
+add_file -vhdl -lib work "../../trbnet/special/bus_register_handler.vhd"
+
+add_file -vhdl -lib work "../../trbnet/special/trb_net_i2cwire.vhd"
+add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_gstart.vhd"
+add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_sendb.vhd"
+add_file -vhdl -lib work "../../vhdlbasics/interface/i2c_slim.vhd"
+
+add_file -vhdl -lib work "../../clocked_tdc/code/clocked_tdc_pkg.vhd"
+add_file -vhdl -lib work "../cores/PLL_TDC/PLL_TDC.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/TDC_FF.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/ChannelRegs.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/FFregs.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/FFregs2.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/InpLut.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/Decoder.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/HitBuffer.vhd"
+add_file -vhdl -lib work "../../clocked_tdc/code/ReadoutHandler.vhd"
+
+
+
+add_file -vhdl -lib work "./mdctdc.vhd"
+#add_file -fpga_constraint "./synplify.fdc"
+
+

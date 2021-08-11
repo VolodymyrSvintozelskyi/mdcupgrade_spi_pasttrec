@@ -1,0 +1,494 @@
+#################################################################
+# Basic Settings
+#################################################################
+
+FREQUENCY PORT CLK       200 MHz;
+FREQUENCY PORT CLK_TDC   156.25 MHz;
+BLOCK PATH TO   PORT "LED*";
+BLOCK PATH TO   PORT "PROGRAMN";
+
+# FREQUENCY NET "THE_MEDIA_INTERFACE/gen_pcs0.THE_SERDES/serdes_sync_0_inst/clk_tx_full" 200 MHz;
+# FREQUENCY NET "med2int_0.clk_full" 200 MHz;
+
+FREQUENCY NET "THE_MEDIA_INTERFACE/clk_rx_full" 200 MHz;
+FREQUENCY NET "THE_MEDIA_INTERFACE/clk_rx_full" 200 MHz;
+
+MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_SCI_READER/PROC_SCI_CTRL.BUS_TX*" 10 ns;
+MULTICYCLE TO CELL "THE_MEDIA_INTERFACE/THE_MED_CONTROL/THE_TX/STAT_REG_OUT*" 10 ns;
+
+REGION               "MEDIA" "R57C34D" 13 30;
+LOCATE UGROUP        "THE_MEDIA_INTERFACE/media_interface_group" REGION "MEDIA" ;
+
+
+
+# USE PRIMARY NET THE_TDC/calibration_pulse ;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.0.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.1.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.2.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.3.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.4.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.5.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.6.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.7.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.8.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.9.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.10.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.11.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.12.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.13.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.14.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.15.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.16.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.17.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.18.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.19.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.20.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.21.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.22.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.23.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.24.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.25.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.26.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.27.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.28.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.29.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.30.THE_CHANNEL/gated_inp 100;
+PRIORITIZE NET THE_TDC/gen_CHANNELS.31.THE_CHANNEL/gated_inp 100;
+
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.16.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.17.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.18.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.19.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.20.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.21.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.22.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.23.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.24.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.25.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.26.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.27.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.28.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.29.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.30.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.31.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.0.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.1.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.2.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.3.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.4.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.5.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.6.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.7.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.8.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.9.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.10.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.11.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.12.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.13.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.14.THE_CHANNEL/gated_inp" 0.500000 ns ;
+# MAXDELAY NET "THE_TDC/gen_CHANNELS.15.THE_CHANNEL/gated_inp" 0.500000 ns ;
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.0.THE_CHANNEL/THE_INP/InpLut"  SITE "R59C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.0.THE_CHANNEL/THE_FF/FFregs"   SITE "R59C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.0.THE_CHANNEL/THE_FFF/FFregs"  SITE "R59C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.0.THE_CHANNEL/THE_FF2/FFregs2" SITE "R59C82D";##
+PROHIBIT                                                            SITE "R59C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.1.THE_CHANNEL/THE_INP/InpLut"  SITE "R61C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.1.THE_CHANNEL/THE_FF/FFregs"   SITE "R61C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.1.THE_CHANNEL/THE_FFF/FFregs"  SITE "R61C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.1.THE_CHANNEL/THE_FF2/FFregs2" SITE "R61C82D";##
+PROHIBIT                                                            SITE "R61C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.2.THE_CHANNEL/THE_INP/InpLut"  SITE "R63C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.2.THE_CHANNEL/THE_FF/FFregs"   SITE "R63C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.2.THE_CHANNEL/THE_FFF/FFregs"  SITE "R63C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.2.THE_CHANNEL/THE_FF2/FFregs2" SITE "R63C82D";##
+PROHIBIT                                                            SITE "R63C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.3.THE_CHANNEL/THE_INP/InpLut"  SITE "R39C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.3.THE_CHANNEL/THE_FF/FFregs"   SITE "R39C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.3.THE_CHANNEL/THE_FFF/FFregs"  SITE "R39C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.3.THE_CHANNEL/THE_FF2/FFregs2" SITE "R39C82D";##
+PROHIBIT                                                            SITE "R39C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.4.THE_CHANNEL/THE_INP/InpLut"  SITE "R42C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.4.THE_CHANNEL/THE_FF/FFregs"   SITE "R42C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.4.THE_CHANNEL/THE_FFF/FFregs"  SITE "R42C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.4.THE_CHANNEL/THE_FF2/FFregs2" SITE "R42C82D";##
+PROHIBIT                                                            SITE "R42C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.5.THE_CHANNEL/THE_INP/InpLut"  SITE "R68C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.5.THE_CHANNEL/THE_FF/FFregs"   SITE "R68C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.5.THE_CHANNEL/THE_FFF/FFregs"  SITE "R68C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.5.THE_CHANNEL/THE_FF2/FFregs2" SITE "R68C82D";##
+PROHIBIT                                                            SITE "R68C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.6.THE_CHANNEL/THE_INP/InpLut"  SITE "R65C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.6.THE_CHANNEL/THE_FF/FFregs"   SITE "R65C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.6.THE_CHANNEL/THE_FFF/FFregs"  SITE "R65C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.6.THE_CHANNEL/THE_FF2/FFregs2" SITE "R65C82D";##
+PROHIBIT                                                            SITE "R65C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.7.THE_CHANNEL/THE_INP/InpLut"  SITE "R44C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.7.THE_CHANNEL/THE_FF/FFregs"   SITE "R44C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.7.THE_CHANNEL/THE_FFF/FFregs"  SITE "R44C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.7.THE_CHANNEL/THE_FF2/FFregs2" SITE "R44C82D";##
+PROHIBIT                                                            SITE "R44C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.8.THE_CHANNEL/THE_INP/InpLut"  SITE "R28C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.8.THE_CHANNEL/THE_FF/FFregs"   SITE "R28C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.8.THE_CHANNEL/THE_FFF/FFregs"  SITE "R28C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.8.THE_CHANNEL/THE_FF2/FFregs2" SITE "R28C82D" ;
+PROHIBIT                                                            SITE "R28C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.9.THE_CHANNEL/THE_INP/InpLut"  SITE "R27C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.9.THE_CHANNEL/THE_FF/FFregs"   SITE "R27C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.9.THE_CHANNEL/THE_FFF/FFregs"  SITE "R27C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.9.THE_CHANNEL/THE_FF2/FFregs2" SITE "R27C82D";##
+PROHIBIT                                                            SITE "R27C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.10.THE_CHANNEL/THE_INP/InpLut"  SITE "R35C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.10.THE_CHANNEL/THE_FF/FFregs"   SITE "R35C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.10.THE_CHANNEL/THE_FFF/FFregs"  SITE "R35C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.10.THE_CHANNEL/THE_FF2/FFregs2" SITE "R35C82D";##
+PROHIBIT                                                            SITE "R35C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.11.THE_CHANNEL/THE_INP/InpLut"  SITE "R25C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.11.THE_CHANNEL/THE_FF/FFregs"   SITE "R25C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.11.THE_CHANNEL/THE_FFF/FFregs"  SITE "R25C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.11.THE_CHANNEL/THE_FF2/FFregs2" SITE "R25C82D";##
+PROHIBIT                                                            SITE "R25C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.12.THE_CHANNEL/THE_INP/InpLut"  SITE "R31C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.12.THE_CHANNEL/THE_FF/FFregs"   SITE "R31C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.12.THE_CHANNEL/THE_FFF/FFregs"  SITE "R31C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.12.THE_CHANNEL/THE_FF2/FFregs2" SITE "R31C82D";##
+PROHIBIT                                                            SITE "R31C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.13.THE_CHANNEL/THE_INP/InpLut"  SITE "R23C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.13.THE_CHANNEL/THE_FF/FFregs"   SITE "R23C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.13.THE_CHANNEL/THE_FFF/FFregs"  SITE "R23C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.13.THE_CHANNEL/THE_FF2/FFregs2" SITE "R23C82D";##
+PROHIBIT                                                            SITE "R23C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.14.THE_CHANNEL/THE_INP/InpLut"  SITE "R37C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.14.THE_CHANNEL/THE_FF/FFregs"   SITE "R37C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.14.THE_CHANNEL/THE_FFF/FFregs"  SITE "R37C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.14.THE_CHANNEL/THE_FF2/FFregs2" SITE "R37C82D";##
+PROHIBIT                                                            SITE "R37C86C";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.15.THE_CHANNEL/THE_INP/InpLut"  SITE "R15C86D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.15.THE_CHANNEL/THE_FF/FFregs"   SITE "R15C84D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.15.THE_CHANNEL/THE_FFF/FFregs"  SITE "R15C87D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.15.THE_CHANNEL/THE_FF2/FFregs2" SITE "R15C82D";##
+PROHIBIT                                                            SITE "R15C86C";
+
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.16.THE_CHANNEL/THE_INP/InpLut"  SITE "R61C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.16.THE_CHANNEL/THE_FF/FFregs"   SITE "R61C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.16.THE_CHANNEL/THE_FFF/FFregs"  SITE "R61C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.16.THE_CHANNEL/THE_FF2/FFregs2" SITE "R61C8D";
+# PROHIBIT                                                            SITE "R61C3B";
+# PROHIBIT                                                            SITE "R61C3C";
+# PROHIBIT                                                            SITE "R61C4B";
+# PROHIBIT                                                            SITE "R61C4C";
+# PROHIBIT                                                            SITE "R61C6B";
+# PROHIBIT                                                            SITE "R61C6C";
+# PROHIBIT                                                            SITE "R61C7B";
+# PROHIBIT                                                            SITE "R61C7C";
+PROHIBIT                                                            SITE "R61C5C";
+# PROHIBIT                                                            SITE "R61C5B";
+# PROHIBIT                                                            SITE "R61C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.17.THE_CHANNEL/THE_INP/InpLut"  SITE "R65C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.17.THE_CHANNEL/THE_FF/FFregs"   SITE "R65C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.17.THE_CHANNEL/THE_FFF/FFregs"  SITE "R65C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.17.THE_CHANNEL/THE_FF2/FFregs2" SITE "R65C8D";
+# PROHIBIT                                                            SITE "R65C3B";
+# PROHIBIT                                                            SITE "R65C3C";
+# PROHIBIT                                                            SITE "R65C4B";
+# PROHIBIT                                                            SITE "R65C4C";
+# PROHIBIT                                                            SITE "R65C6B";
+# PROHIBIT                                                            SITE "R65C6C";
+# PROHIBIT                                                            SITE "R65C7B";
+# PROHIBIT                                                            SITE "R65C7C";
+PROHIBIT                                                            SITE "R65C5C";
+# PROHIBIT                                                            SITE "R65C5B";
+# PROHIBIT                                                            SITE "R65C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.18.THE_CHANNEL/THE_INP/InpLut"  SITE "R41C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.18.THE_CHANNEL/THE_FF/FFregs"   SITE "R41C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.18.THE_CHANNEL/THE_FFF/FFregs"  SITE "R41C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.18.THE_CHANNEL/THE_FF2/FFregs2" SITE "R41C8D";
+# PROHIBIT                                                            SITE "R41C3B";
+# PROHIBIT                                                            SITE "R41C3C";
+# PROHIBIT                                                            SITE "R41C4B";
+# PROHIBIT                                                            SITE "R41C4C";
+# PROHIBIT                                                            SITE "R41C6B";
+# PROHIBIT                                                            SITE "R41C6C";
+# PROHIBIT                                                            SITE "R41C7B";
+# PROHIBIT                                                            SITE "R41C7C";
+PROHIBIT                                                            SITE "R41C5C";
+# PROHIBIT                                                            SITE "R41C5B";
+# PROHIBIT                                                            SITE "R41C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.19.THE_CHANNEL/THE_INP/InpLut"  SITE "R68C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.19.THE_CHANNEL/THE_FF/FFregs"   SITE "R68C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.19.THE_CHANNEL/THE_FFF/FFregs"  SITE "R68C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.19.THE_CHANNEL/THE_FF2/FFregs2" SITE "R68C8D";
+# PROHIBIT                                                            SITE "R68C3B";
+# PROHIBIT                                                            SITE "R68C3C";
+# PROHIBIT                                                            SITE "R68C4B";
+# PROHIBIT                                                            SITE "R68C4C";
+# PROHIBIT                                                            SITE "R68C6B";
+# PROHIBIT                                                            SITE "R68C6C";
+# PROHIBIT                                                            SITE "R68C7B";
+# PROHIBIT                                                            SITE "R68C7C";
+PROHIBIT                                                            SITE "R68C5C";
+# PROHIBIT                                                            SITE "R68C5B";
+# PROHIBIT                                                            SITE "R68C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.20.THE_CHANNEL/THE_INP/InpLut"  SITE "R63C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.20.THE_CHANNEL/THE_FF/FFregs"   SITE "R63C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.20.THE_CHANNEL/THE_FFF/FFregs"  SITE "R63C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.20.THE_CHANNEL/THE_FF2/FFregs2" SITE "R63C8D";
+# PROHIBIT                                                            SITE "R63C3B";
+# PROHIBIT                                                            SITE "R63C3C";
+# PROHIBIT                                                            SITE "R63C4B";
+# PROHIBIT                                                            SITE "R63C4C";
+# PROHIBIT                                                            SITE "R63C6B";
+# PROHIBIT                                                            SITE "R63C6C";
+# PROHIBIT                                                            SITE "R63C7B";
+# PROHIBIT                                                            SITE "R63C7C";
+PROHIBIT                                                            SITE "R63C5C";
+# PROHIBIT                                                            SITE "R63C5B";
+# PROHIBIT                                                            SITE "R63C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.21.THE_CHANNEL/THE_INP/InpLut"  SITE "R39C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.21.THE_CHANNEL/THE_FF/FFregs"   SITE "R39C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.21.THE_CHANNEL/THE_FFF/FFregs"  SITE "R39C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.21.THE_CHANNEL/THE_FF2/FFregs2" SITE "R39C8D";
+# PROHIBIT                                                            SITE "R39C3B";
+# PROHIBIT                                                            SITE "R39C3C";
+# PROHIBIT                                                            SITE "R39C4B";
+# PROHIBIT                                                            SITE "R39C4C";
+# PROHIBIT                                                            SITE "R39C6B";
+# PROHIBIT                                                            SITE "R39C6C";
+# PROHIBIT                                                            SITE "R39C7B";
+# PROHIBIT                                                            SITE "R39C7C";
+PROHIBIT                                                            SITE "R39C5C";
+# PROHIBIT                                                            SITE "R39C5B";
+# PROHIBIT                                                            SITE "R39C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.22.THE_CHANNEL/THE_INP/InpLut"  SITE "R37C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.22.THE_CHANNEL/THE_FF/FFregs"   SITE "R37C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.22.THE_CHANNEL/THE_FFF/FFregs"  SITE "R37C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.22.THE_CHANNEL/THE_FF2/FFregs2" SITE "R37C8D";
+# PROHIBIT                                                            SITE "R37C3B";
+# PROHIBIT                                                            SITE "R37C3C";
+# PROHIBIT                                                            SITE "R37C4B";
+# PROHIBIT                                                            SITE "R37C4C";
+# PROHIBIT                                                            SITE "R37C6B";
+# PROHIBIT                                                            SITE "R37C6C";
+# PROHIBIT                                                            SITE "R37C7B";
+# PROHIBIT                                                            SITE "R37C7C";
+PROHIBIT                                                            SITE "R37C5C";
+# PROHIBIT                                                            SITE "R37C5B";
+# PROHIBIT                                                            SITE "R37C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.23.THE_CHANNEL/THE_INP/InpLut"  SITE "R35C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.23.THE_CHANNEL/THE_FF/FFregs"   SITE "R35C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.23.THE_CHANNEL/THE_FFF/FFregs"  SITE "R35C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.23.THE_CHANNEL/THE_FF2/FFregs2" SITE "R35C8D";
+# PROHIBIT                                                            SITE "R35C3B";
+# PROHIBIT                                                            SITE "R35C3C";
+# PROHIBIT                                                            SITE "R35C4B";
+# PROHIBIT                                                            SITE "R35C4C";
+# PROHIBIT                                                            SITE "R35C6B";
+# PROHIBIT                                                            SITE "R35C6C";
+# PROHIBIT                                                            SITE "R35C7B";
+# PROHIBIT                                                            SITE "R35C7C";
+PROHIBIT                                                            SITE "R35C5C";
+# PROHIBIT                                                            SITE "R35C5B";
+# PROHIBIT                                                            SITE "R35C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.24.THE_CHANNEL/THE_INP/InpLut"  SITE "R11C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.24.THE_CHANNEL/THE_FF/FFregs"   SITE "R11C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.24.THE_CHANNEL/THE_FFF/FFregs"  SITE "R11C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.24.THE_CHANNEL/THE_FF2/FFregs2" SITE "R11C8D";
+# PROHIBIT                                                            SITE "R11C3B";
+# PROHIBIT                                                            SITE "R11C3C";
+# PROHIBIT                                                            SITE "R11C4B";
+# PROHIBIT                                                            SITE "R11C4C";
+# PROHIBIT                                                            SITE "R11C6B";
+# PROHIBIT                                                            SITE "R11C6C";
+# PROHIBIT                                                            SITE "R11C7B";
+# PROHIBIT                                                            SITE "R11C7C";
+PROHIBIT                                                            SITE "R11C5C";
+# PROHIBIT                                                            SITE "R11C5B";
+# PROHIBIT                                                            SITE "R11C5D";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.25.THE_CHANNEL/THE_INP/InpLut"  SITE "R8C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.25.THE_CHANNEL/THE_FF/FFregs"   SITE "R8C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.25.THE_CHANNEL/THE_FFF/FFregs"  SITE "R8C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.25.THE_CHANNEL/THE_FF2/FFregs2" SITE "R8C8D";
+# PROHIBIT                                                            SITE "R8C3B";
+# PROHIBIT                                                            SITE "R8C3C";
+# PROHIBIT                                                            SITE "R8C4B";
+# PROHIBIT                                                            SITE "R8C4C";
+# PROHIBIT                                                            SITE "R8C6B";
+# PROHIBIT                                                            SITE "R8C6C";
+# PROHIBIT                                                            SITE "R8C7B";
+# PROHIBIT                                                            SITE "R8C7C";
+PROHIBIT                                                            SITE "R8C5C";
+# PROHIBIT                                                            SITE "R8C5B";
+# PROHIBIT                                                            SITE "R8C5D";
+
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.26.THE_CHANNEL/THE_INP/InpLut"  SITE "R32C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.26.THE_CHANNEL/THE_FF/FFregs"   SITE "R32C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.26.THE_CHANNEL/THE_FFF/FFregs"  SITE "R32C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.26.THE_CHANNEL/THE_FF2/FFregs2" SITE "R32C8D";
+# PROHIBIT                                                            SITE "R32C3B";
+# PROHIBIT                                                            SITE "R32C3C";
+# PROHIBIT                                                            SITE "R32C4B";
+# PROHIBIT                                                            SITE "R32C4C";
+# PROHIBIT                                                            SITE "R32C6B";
+# PROHIBIT                                                            SITE "R32C6C";
+# PROHIBIT                                                            SITE "R32C7B";
+# PROHIBIT                                                            SITE "R32C7C";
+PROHIBIT                                                            SITE "R32C5C";
+# PROHIBIT                                                            SITE "R32C5B";
+# PROHIBIT                                                            SITE "R32C5D";
+
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.27.THE_CHANNEL/THE_INP/InpLut"  SITE "R14C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.27.THE_CHANNEL/THE_FF/FFregs"   SITE "R14C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.27.THE_CHANNEL/THE_FFF/FFregs"  SITE "R14C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.27.THE_CHANNEL/THE_FF2/FFregs2" SITE "R14C8D";
+# PROHIBIT                                                            SITE "R14C3B";
+# PROHIBIT                                                            SITE "R14C3C";
+# PROHIBIT                                                            SITE "R14C4B";
+# PROHIBIT                                                            SITE "R14C4C";
+# PROHIBIT                                                            SITE "R14C6B";
+# PROHIBIT                                                            SITE "R14C6C";
+# PROHIBIT                                                            SITE "R14C7B";
+# PROHIBIT                                                            SITE "R14C7C";
+PROHIBIT                                                            SITE "R14C5C";
+# PROHIBIT                                                            SITE "R14C5B";
+# PROHIBIT                                                            SITE "R14C5D";
+
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.28.THE_CHANNEL/THE_INP/InpLut"  SITE "R26C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.28.THE_CHANNEL/THE_FF/FFregs"   SITE "R26C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.28.THE_CHANNEL/THE_FFF/FFregs"  SITE "R26C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.28.THE_CHANNEL/THE_FF2/FFregs2" SITE "R26C8D";
+# PROHIBIT                                                            SITE "R26C3B";
+# PROHIBIT                                                            SITE "R26C3C";
+# PROHIBIT                                                            SITE "R26C4B";
+# PROHIBIT                                                            SITE "R26C4C";
+# PROHIBIT                                                            SITE "R26C6B";
+# PROHIBIT                                                            SITE "R26C6C";
+# PROHIBIT                                                            SITE "R26C7B";
+# PROHIBIT                                                            SITE "R26C7C";
+PROHIBIT                                                            SITE "R26C5C";
+# PROHIBIT                                                            SITE "R26C5B";
+# PROHIBIT                                                            SITE "R26C5D";
+
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.29.THE_CHANNEL/THE_INP/InpLut"  SITE "R16C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.29.THE_CHANNEL/THE_FF/FFregs"   SITE "R16C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.29.THE_CHANNEL/THE_FFF/FFregs"  SITE "R16C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.29.THE_CHANNEL/THE_FF2/FFregs2" SITE "R16C8D";
+# PROHIBIT                                                            SITE "R16C3B";
+# PROHIBIT                                                            SITE "R16C3C";
+# PROHIBIT                                                            SITE "R16C4B";
+# PROHIBIT                                                            SITE "R16C4C";
+# PROHIBIT                                                            SITE "R16C6B";
+# PROHIBIT                                                            SITE "R16C6C";
+# PROHIBIT                                                            SITE "R16C7B";
+# PROHIBIT                                                            SITE "R16C7C";
+PROHIBIT                                                            SITE "R16C5C";
+# PROHIBIT                                                            SITE "R16C5B";
+# PROHIBIT                                                            SITE "R16C5D";
+
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.30.THE_CHANNEL/THE_INP/InpLut"  SITE "R18C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.30.THE_CHANNEL/THE_FF/FFregs"   SITE "R18C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.30.THE_CHANNEL/THE_FFF/FFregs"  SITE "R18C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.30.THE_CHANNEL/THE_FF2/FFregs2" SITE "R18C8D";
+# PROHIBIT                                                            SITE "R18C3B";
+# PROHIBIT                                                            SITE "R18C3C";
+# PROHIBIT                                                            SITE "R18C4B";
+# PROHIBIT                                                            SITE "R18C4C";
+# PROHIBIT                                                            SITE "R18C6B";
+# PROHIBIT                                                            SITE "R18C6C";
+# PROHIBIT                                                            SITE "R18C7B";
+# PROHIBIT                                                            SITE "R18C7C";
+PROHIBIT                                                            SITE "R18C5C";
+# PROHIBIT                                                            SITE "R18C5B";
+# PROHIBIT                                                            SITE "R18C5D";
+
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.31.THE_CHANNEL/THE_INP/InpLut"  SITE "R23C5D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.31.THE_CHANNEL/THE_FF/FFregs"   SITE "R23C6D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.31.THE_CHANNEL/THE_FFF/FFregs"  SITE "R23C3D" ;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.31.THE_CHANNEL/THE_FF2/FFregs2" SITE "R23C8D";
+# PROHIBIT                                                            SITE "R23C3B";
+# PROHIBIT                                                            SITE "R23C3C";
+# PROHIBIT                                                            SITE "R23C4B";
+# PROHIBIT                                                            SITE "R23C4C";
+# PROHIBIT                                                            SITE "R23C6B";
+# PROHIBIT                                                            SITE "R23C6C";
+# PROHIBIT                                                            SITE "R23C7B";
+# PROHIBIT                                                            SITE "R23C7C";
+PROHIBIT                                                            SITE "R23C5C";
+# PROHIBIT                                                            SITE "R23C5B";
+# PROHIBIT                                                            SITE "R23C5D";
+
+LOCATE UGROUP "THE_TDC/THE_REF_CHANNEL/THE_INP/InpLut"  SITE "R12C86D" ;
+LOCATE UGROUP "THE_TDC/THE_REF_CHANNEL/THE_FF/FFregs"   SITE "R12C84D" ;
+LOCATE UGROUP "THE_TDC/THE_REF_CHANNEL/THE_FFF/FFregs"  SITE "R12C87D" ;
+LOCATE UGROUP "THE_TDC/THE_REF_CHANNEL/THE_FF2/FFregs2" SITE "R12C82D";##
+
+# REGION               "TDCLEFT" "R2C16D" 68 4;
+# PROHIBIT REGION "TDCLEFT";
+# REGION               "TDCRIGHT" "R2C68D" 68 4;
+# PROHIBIT REGION "TDCRIGHT";
+
+REGION               "DECODERLEFT" "R9C2D" 60 10;
+REGION               "DECODERRIGHT" "R7C78D" 60 10;
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.16.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.17.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.18.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.19.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.20.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.21.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.22.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.23.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.24.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.25.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.26.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.27.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.28.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.29.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.30.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.31.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERLEFT";
+
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.0.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.1.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.2.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.3.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.4.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.5.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.6.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.7.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.8.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.9.THE_CHANNEL/THE_DECODER/Decoder"  REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.10.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.11.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.12.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.13.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.14.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERRIGHT";
+LOCATE UGROUP "THE_TDC/gen_CHANNELS.15.THE_CHANNEL/THE_DECODER/Decoder" REGION "DECODERRIGHT";
