@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BaliProject version="3.2" title="mdctdc" device="LFE5UM-45F-8BG381C" default_implementation="mdctdc">
-    <Options/>
+    <Options>
+        <Option name="HDL type" value="VHDL"/>
+    </Options>
     <Implementation title="mdctdc" dir="mdctdc" description="Automatically generated implemenatation" synthesis="synplify" default_strategy="Strategy1">
-        <Options def_top="mdctdc" top="mdctdc"/>
+        <Options def_top="PLL_TDC" top="mdctdc"/>
         <Source name="../workdir/lattice-diamond/cae_library/synthesis/vhdl/ecp5um.vhd" type="VHDL" type_short="VHDL">
             <Options lib="work"/>
         </Source>
@@ -345,19 +347,19 @@
         <Source name="../../cores/PLL_TDC/PLL_TDC.sbx" type="sbx" type_short="SBX">
             <Options/>
         </Source>
-        <Source name="../../../clocked_tdc/code/ChannelRegs.vhd" type="VHDL" type_short="VHDL">
+        <Source name="../../../clocked_tdc/code/ChannelRegs.vhd" type="VHDL" type_short="VHDL" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="../../../clocked_tdc/code/FFregs.vhd" type="VHDL" type_short="VHDL">
+        <Source name="../../../clocked_tdc/code/FFregs.vhd" type="VHDL" type_short="VHDL" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="../../../clocked_tdc/code/TDC_FF.vhd" type="VHDL" type_short="VHDL">
+        <Source name="../../../clocked_tdc/code/TDC_FF.vhd" type="VHDL" type_short="VHDL" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="../../../clocked_tdc/code/FFregs2.vhd" type="VHDL" type_short="VHDL">
+        <Source name="../../../clocked_tdc/code/FFregs2.vhd" type="VHDL" type_short="VHDL" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="untitled.lpf" type="Logic Preference" type_short="LPF" excluded="TRUE">
+        <Source name="sim/sim.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="../workdir/mdctdc.lpf" type="Logic Preference" type_short="LPF">

@@ -79,8 +79,8 @@ architecture arch of mdctdc is
   signal readout_rx                  : READOUT_RX;
   signal readout_tx                  : readout_tx_array_t(0 to 1);
 
-  signal ctrlbus_tx, bustdc_tx, bussci_tx, bustools_tx, bustc_tx, bus_master_in  : CTRLBUS_TX;
-  signal ctrlbus_rx, bustdc_rx, bussci_rx, bustools_rx, bustc_rx, bus_master_out : CTRLBUS_RX;
+  signal ctrlbus_tx, bustdc_tx, bussci_tx, bustools_tx, bustc_tx, bus_master_in,    busspi_tx  : CTRLBUS_TX;
+  signal ctrlbus_rx, bustdc_rx, bussci_rx, bustools_rx, bustc_rx, bus_master_out,   busspi_rx : CTRLBUS_RX;
 
   signal common_stat_reg : std_logic_vector(std_COMSTATREG*32-1 downto 0) := (others => '0');
   signal common_ctrl_reg : std_logic_vector(std_COMCTRLREG*32-1 downto 0);
@@ -97,9 +97,10 @@ architecture arch of mdctdc is
   signal calibration_pulse: std_logic;
   
   signal dummy_i : std_logic;
-  
+  signal dummy_signal : std_logic_vector(1 downto 0);
 begin
 
+  --  GSR_INST: GSR port map (GSR=>GSR_N);
 ---------------------------------------------------------------------------
 -- Clock & Reset Handling
 ---------------------------------------------------------------------------
@@ -235,11 +236,11 @@ begin
       BUS_RX(0) => bustools_rx,         --Flash, SPI, UART, ADC, SED
       BUS_RX(1) => bussci_rx,           --SCI Serdes
       BUS_RX(2) => busspi_rx,
-      BUS_RX(3) => bustdc_rx,            --Clock switch
+      --BUS_RX(3) => bustdc_rx,            --Clock switch
       BUS_TX(0) => bustools_tx,
       BUS_TX(1) => bussci_tx,
       BUS_TX(2) => busspi_tx,
-      BUS_TX(3) => bustdc_tx,
+      --BUS_TX(3) => bustdc_tx,
 
       STAT_DEBUG => open
       );
@@ -279,6 +280,7 @@ begin
       MONITOR_INPUTS    => monitor_inputs_i,
       TRIG_GEN_INPUTS   => trigger_inputs_i,
       TRIG_GEN_OUTPUTS(1 downto 0)  => GPIO(3 downto 2),
+      TRIG_GEN_OUTPUTS(3 downto 2)  => dummy_signal(1 downto 0),
       --SED
       SED_ERROR_OUT     => sed_error_i,
       --Slowcontrol
