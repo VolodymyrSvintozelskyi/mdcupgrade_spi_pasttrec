@@ -49,9 +49,11 @@ begin
     begin
       if rising_edge(CLK) then
         if wr1 = '1' then
-          ram(conv_integer(a1)) <= din1;
+            ram(conv_integer(a1))   <= din1;
+            dout1                   <= din1;
+        else
+            dout1 <= ram(conv_integer(a1));
         end if;
-        dout1 <= ram(conv_integer(a1));
         dout2 <= ram(conv_integer(a2));
       end if;
     end process;
