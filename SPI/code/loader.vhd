@@ -50,7 +50,7 @@ architecture arch of loader is
     signal spi_reg_addr    : std_logic_vector(3 downto 0);
     signal spi_reg_data    : std_logic_vector(31 downto 0);
     signal spi_ram_addr    : std_logic_vector(7 downto 0)   := x"00";
-    signal spi_ram_offset  : integer range 0 to 31;
+    signal spi_ram_offset  : integer range 0 to 63;
 
     signal sc_ram_access   : std_logic;
     signal sc_unknown      : std_logic;
@@ -61,13 +61,13 @@ architecture arch of loader is
 
     signal autoload_chipid : integer range 0 to 3;
     signal autoload_en     : std_logic;
-    signal autoload_num    : integer range 0 to 31;
+    signal autoload_num    : integer range 0 to 63;
     signal autoload_addr   : std_logic_vector(7 downto 0);
 
     signal load_chipid     : integer range 0 to 3;
     signal load_en         : std_logic_vector(3 downto 0);
     signal load_trigger    : std_logic;
-    signal load_num        : integer range 0 to 31;
+    signal load_num        : integer range 0 to 63;
     signal load_addr       : std_logic_vector(7 downto 0);
 
     signal spi_fsm_control      : std_logic := '0';
@@ -151,12 +151,12 @@ begin
             when PASTTREC_AUTOLOAD_CONF2=>
                 if autoload_chipid = 0 or autoload_chipid = 2 then
                     autoload_addr   <= mem_data_out2(7 downto 0);
-                    autoload_num    <= to_integer(unsigned(mem_data_out2(12 downto 8)));
-                    autoload_en     <= mem_data_out2(13);
+                    autoload_num    <= to_integer(unsigned(mem_data_out2(13 downto 8)));
+                    autoload_en     <= mem_data_out2(14);
                 else
                     autoload_addr   <= mem_data_out2(23 downto 16);
-                    autoload_num    <= to_integer(unsigned(mem_data_out2(28 downto 24)));
-                    autoload_en     <= mem_data_out2(29);
+                    autoload_num    <= to_integer(unsigned(mem_data_out2(29 downto 24)));
+                    autoload_en     <= mem_data_out2(30);
                 end if;
                 spi_fsm_state   <= PASTTREC_AUTOLOAD;
             when PASTTREC_AUTOLOAD  =>
@@ -376,7 +376,7 @@ begin
                 --BUS_TX.ack  <= '1';
                 if spi_fsm_state = IDLE then
                     if BUS_RX.addr(15 downto 8) = x"a0" then            -- MEMORY
-                        if BUS_RX.addr = x"a000" and spi_ram_busy = '1' then
+                        if BUS_RX.addr = x"a001" and spi_ram_busy = '1' then
                             sc_busy <= '1';
                         else
                             mem_addr1       <= BUS_RX.addr (7 downto 0);

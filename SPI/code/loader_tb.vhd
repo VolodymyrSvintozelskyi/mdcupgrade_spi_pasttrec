@@ -434,7 +434,7 @@ begin
         wait until falling_edge(CLK);
         BUS_RX.write <= '1';
         BUS_RX.addr  <= x"a0" & x"02";
-        BUS_RX.data  <= "0010" & x"5" & x"10" & "0011" & x"B" & x"20";
+        BUS_RX.data  <= "0100" & x"5" & x"10" & "0111" & x"F" & x"20";
         wait until falling_edge(CLK);
         BUS_RX.write <= '0';
 
@@ -452,7 +452,7 @@ begin
         wait until falling_edge(CLK);
         BUS_RX.write <= '1';
         BUS_RX.addr  <= x"a0" & x"03";
-        BUS_RX.data  <= "0010" & x"3" & x"10" & "0000" & x"0" & x"00";
+        BUS_RX.data  <= "0100" & x"3" & x"10" & "0000" & x"0" & x"00";
         wait until falling_edge(CLK);
         BUS_RX.write <= '0';
 
@@ -483,9 +483,9 @@ begin
         --------------- END WAIT BLOCK------------------
 
         start_autoload_ind := spi_hist_ind;
-        wait for 100000*TbPeriod;
+        wait for 1000000*TbPeriod;
 
-        if (spi_hist_ind - start_autoload_ind) /= 2+27+5+3 then
+        if (spi_hist_ind - start_autoload_ind) /= 2+63+5+3 then
             report "Incorrect number of SPI commands! Actual is " & integer'image(spi_hist_ind-start_autoload_ind);
             num_of_errors := num_of_errors + 1;
         end if;
@@ -496,18 +496,18 @@ begin
                     report "Incorrect SPI! " & integer'image(i-start_autoload_ind);
                     num_of_errors := num_of_errors + 1;
                 end if;
-            elsif i-start_autoload_ind < 27 + 2 then
+            elsif i-start_autoload_ind < 63 + 2 then
                 if spi_hist(i) /= ram(32 + i - start_autoload_ind - 2)(18 downto 0) then
                     report "Incorrect SPI! " & integer'image(i-start_autoload_ind);
                     num_of_errors := num_of_errors + 1;
                 end if;
-            elsif i-start_autoload_ind < 5 + 27 + 2 then
-                if spi_hist(i) /= ram(16 + i - start_autoload_ind - 2 - 27)(18 downto 0) then
+            elsif i-start_autoload_ind < 5 + 63 + 2 then
+                if spi_hist(i) /= ram(16 + i - start_autoload_ind - 2 - 63)(18 downto 0) then
                     report "Incorrect SPI! " & integer'image(i-start_autoload_ind);
                     num_of_errors := num_of_errors + 1;
                 end if;
-            elsif i-start_autoload_ind < 3 + 5 + 27 + 2 then
-                if spi_hist(i) /= ram(16 + i - start_autoload_ind - 2 - 27 - 5)(18 downto 0) then
+            elsif i-start_autoload_ind < 3 + 5 + 63 + 2 then
+                if spi_hist(i) /= ram(16 + i - start_autoload_ind - 2 - 63 - 5)(18 downto 0) then
                     report "Incorrect SPI! " & integer'image(i-start_autoload_ind);
                     num_of_errors := num_of_errors + 1;
                 end if;

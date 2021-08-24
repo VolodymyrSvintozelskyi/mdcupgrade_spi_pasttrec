@@ -29,7 +29,7 @@ entity spi_ltc2600_simpl is
     SPI_SCK_OUT  : out std_logic;
     -- EXTERNAL RAM
     RAM_BUSY    : out std_logic;
-    RAM_OFFSET  : out integer range 0 to 31;
+    RAM_OFFSET  : out integer range 0 to 63;
     RAM_DATA    : in  std_logic_vector(31 downto 0)
     );
 end entity;
@@ -38,7 +38,7 @@ end entity;
 architecture spi_ltc2600_arch of spi_ltc2600_simpl is
 
 
-  signal ram_addr       : integer range 0 to 31;
+  signal ram_addr       : integer range 0 to 63;
   --signal ram_data       : std_logic_vector(31 downto 0);
   signal ctrl_reg       : std_logic_vector(31 downto 0) := (others => '0');
   signal start          : std_logic;
@@ -51,7 +51,7 @@ architecture spi_ltc2600_arch of spi_ltc2600_simpl is
   signal spi_sdo : std_logic;
   signal spi_sdi : std_logic;
 
-  signal word_count : integer range 0 to 31 := 1;
+  signal word_count : integer range 0 to 63 := 1;
   signal bit_count  : integer range 0 to BITS-1;
   signal time_count : integer range 0 to 1023;
   signal readback   : std_logic_vector(31 downto 0);
@@ -114,16 +114,16 @@ begin
                     ctrl_reg(31) <= BUS_DATA_IN(31);
                 elsif BUS_ADDR_IN(3 downto 0) = x"1" then                                   -- all CTRL_REG
                     ctrl_reg    <= BUS_DATA_IN(31 downto 0);
-                    ctrl_reg(7) <= BUS_DATA_IN(7) and or_all(BUS_DATA_IN(4 downto 0));
-                    ctrl_reg(6) <= BUS_DATA_IN(6) and or_all(BUS_DATA_IN(4 downto 0));
+                    ctrl_reg(7) <= BUS_DATA_IN(7) and or_all(BUS_DATA_IN(5 downto 0));
+                    ctrl_reg(6) <= BUS_DATA_IN(6) and or_all(BUS_DATA_IN(5 downto 0));
                 elsif BUS_ADDR_IN(3 downto 0) = x"2" then                                   -- override / invert
                     ctrl_reg(13 downto 8)       <= BUS_DATA_IN(5 downto 0);
                 elsif BUS_ADDR_IN(3 downto 0) = x"3" then                                   -- wait_cycles / word_length
                     ctrl_reg(29 downto 14)      <= BUS_DATA_IN(15 downto 0);
                 elsif BUS_ADDR_IN(3 downto 0) = x"A" then  --0x11                           -- start transmitting
                     ctrl_reg(7 downto 0)        <= BUS_DATA_IN(7 downto 0);
-                    ctrl_reg(7) <= BUS_DATA_IN(7) and or_all(BUS_DATA_IN(4 downto 0));
-                    ctrl_reg(6) <= BUS_DATA_IN(6) and or_all(BUS_DATA_IN(4 downto 0));
+                    ctrl_reg(7) <= BUS_DATA_IN(7) and or_all(BUS_DATA_IN(5 downto 0));
+                    ctrl_reg(6) <= BUS_DATA_IN(6) and or_all(BUS_DATA_IN(5 downto 0));
                 else
                     BUS_ACK_OUT <= '0';
                     BUS_UNK_OUT <= '1';
