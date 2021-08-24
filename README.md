@@ -67,7 +67,7 @@ Protocol:
 
 During reset sequence firstly the module will send two words with low and high RST_OUT values for resetting all PASTTREC chips.
 
-![image-20210824161125682](/home/vsvintozelskyi/.config/Typora/typora-user-images/image-20210824161125682.png)
+![image](https://i.ibb.co/7kqqP1n/reset.png)
 
 After this, the module will begin transmitting the configuration commands for every PASTTREC chip one by one, first for chip_id 00. It can be configured with memory registers 0x02 and 0x03. 
 
