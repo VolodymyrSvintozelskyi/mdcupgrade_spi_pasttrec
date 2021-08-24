@@ -8,26 +8,40 @@ add wave -position end  sim:/tb_loader/SPI_CS_OUT
 add wave -position end  sim:/tb_loader/SPI_SDI_IN
 add wave -position end  sim:/tb_loader/SPI_SDO_OUT
 add wave -position end  sim:/tb_loader/SPI_SCK_OUT
-add wave -position end  sim:/tb_loader/SPI_CLR_OUT
-add wave -position end  sim:/tb_loader/SPI_CS_OUT(0)
-add wave -position end  sim:/tb_loader/SPI_SDO_OUT(0)
-add wave -position end  sim:/tb_loader/SPI_SCK_OUT(0)
+add wave -position end  sim:/tb_loader/SPI_RST_OUT
 
-add wave -position end -radix hexadecimal sim:/tb_loader/dut/SPI_INTERFACE/ram
+add wave -position end  sim:/tb_loader/dut/MEMORY/ram
 
 
-
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/override_cs
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/override_sck
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/override_sdo
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/invert_cs
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/invert_sck
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/invert_sdo
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/clear_reg
 add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/word_length
 add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/wait_cycles
 add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/ctrl_reg
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/chipselect_reg
-add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/sudolock
-run 80000ns
+
+add wave -position end  sim:/tb_loader/dut/spi_fsm_state
+add wave -position end  sim:/tb_loader/dut/sc_fsm_state
+
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/BUS_DATA_OUT
+
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/RESET_IN
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/BUS_READ_IN
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/BUS_WRITE_IN
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/BUS_ADDR_IN
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/BUS_DATA_IN
+
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/start
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/fsm_state
+
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/RAM_BUSY
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/RAM_OFFSET
+add wave -position end  sim:/tb_loader/dut/SPI_INTERFACE/RAM_DATA
+
+add wave -position end  sim:/tb_loader/dut/load_en
+add wave -position end  sim:/tb_loader/dut/load_chipid
+add wave -position end  sim:/tb_loader/dut/load_en
+add wave -position end  sim:/tb_loader/dut/load_trigger
+add wave -position end  sim:/tb_loader/dut/load_num
+add wave -position end  sim:/tb_loader/dut/load_addr
+
+
+run 15000000ns
 wave zoom full

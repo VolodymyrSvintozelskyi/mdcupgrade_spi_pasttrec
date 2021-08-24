@@ -21,7 +21,9 @@ entity ram_dp_preset is
     dout1 : out std_logic_vector(width-1 downto 0);
     din1  : in  std_logic_vector(width-1 downto 0);
     a2    : in  std_logic_vector(depth-1 downto 0);
-    dout2 : out std_logic_vector(width-1 downto 0)
+    dout2 : out std_logic_vector(width-1 downto 0);
+    a3    : in  std_logic_vector(depth-1 downto 0);
+    dout3 : out std_logic_vector(width-1 downto 0)
     );
 end entity;
 
@@ -48,13 +50,27 @@ begin
   process(CLK)
     begin
       if rising_edge(CLK) then
-        if wr1 = '1' then
-            ram(conv_integer(a1))   <= din1;
-            dout1                   <= din1;
+        if a1 /= x"00" then
+            if wr1 = '1' then
+                ram(conv_integer(a1))   <= din1;
+                dout1                   <= din1;
+            else
+                dout1 <= ram(conv_integer(a1));
+            end if;
         else
-            dout1 <= ram(conv_integer(a1));
+            dout1 <= x"00000000";
         end if;
-        dout2 <= ram(conv_integer(a2));
+
+        if a2 /= x"00" then
+            dout2 <= ram(conv_integer(a2));
+        else
+            dout2 <= x"00000000";
+        end if;
+        if a3 /= x"00" then
+            dout3 <= ram(conv_integer(a3));
+        else
+            dout3 <= x"00000000";
+        end if;
       end if;
     end process;
 
