@@ -347,7 +347,24 @@ begin
 -------------------------------------------------------------------------------
 -- THE automatic SPI
 -------------------------------------------------------------------------------
--- THE_SPI : entity work.pasttrec_spi
+THE_SPI : entity work.pasttrec_spi
+    generic map(
+        SPI_BUNCHES             => 2,
+        SPI_PASTTREC_PER_BUNCH  => 1,
+        SPI_CHIP_IDs            => (3 downto 0 => "0100", others => '0')
+    )port map(
+        CLK             => clk_sys,
+        BUS_RX          => busspi_rx,
+        BUS_TX          => busspi_tx,
+
+        RST_IN          => GSR_N,
+
+        SPI_CS_OUT      => open,
+        SPI_SDI_IN      => MISO,
+        SPI_SDO_OUT     => MOSI,
+        SPI_SCK_OUT     => SCK,
+        SPI_RST_OUT     => RSTN
+    );
 --   port map(
 --   
 --   );

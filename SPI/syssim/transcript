@@ -1,0 +1,954 @@
+# Loading project syssim
+vsim work.system_testbench
+# vsim work.system_testbench 
+# Start time: 14:39:53 on Aug 27,2021
+# //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020 Linux 5.13.2-1-default
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim - Lattice FPGA Edition and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+do run.do
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd failed with 4 errors.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 1 failed with 4 errors.
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chipLoad to 3 chipLoad to 1 chipLoad to 4 chip
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# WARNING: No extended dataflow license exists
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chipLoad to 3 chipLoad to 1 chipLoad to 4 chip
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+add wave -position 14  sim:/system_testbench/dut/load_chipid
+add wave -position 15  sim:/system_testbench/dut/load_all
+add wave -position 16  sim:/system_testbench/dut/load_trigger
+add wave -position 17  sim:/system_testbench/dut/load_num
+add wave -position 18  sim:/system_testbench/dut/load_addr
+add wave -position 19  sim:/system_testbench/dut/load_past_id
+do run.do
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+do run.do
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 157500 ns
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to all chips
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Note: Load to all chips
+# 
+#    Time: 78845 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Note: Load to all chips
+# 
+#    Time: 78845 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Note: Load to all chips
+# 
+#    Time: 79565 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Note: Load to all chips
+# 
+#    Time: 79565 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Note: Load to all chips
+# 
+#    Time: 83465 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+add wave -position 9  sim:/system_testbench/dut/spi_active_bunch
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Note: Load to all chips
+# 
+#    Time: 83465 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd failed with 8 errors.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 1 failed with 8 errors.
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# ** Fatal: (vsim-3421) Value 4 for autoload_chipid is out of range 0 to 3.
+#    Time: 17855 ns  Iteration: 1  Process: /system_testbench/dut/SPI_FSM File: /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd
+# Fatal error in Process SPI_FSM at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd line 215
+# 
+# HDL call sequence:
+# Stopped at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd 215 Process SPI_FSM
+# 
+# 0 ps
+# 18747750 ps
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# ** Fatal: (vsim-3421) Value 4 for load_past_id is out of range 0 to 3.
+#    Time: 45790 ns  Iteration: 1  Process: /system_testbench/dut/SPI_FSM File: /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd
+# Fatal error in Process SPI_FSM at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd line 227
+# 
+# HDL call sequence:
+# Stopped at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd 227 Process SPI_FSM
+# 
+# 0 ps
+# 48079500 ps
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Fatal: (vsim-3421) Value 6 for load_past_id is out of range 0 to 5.
+#    Time: 65910 ns  Iteration: 1  Process: /system_testbench/dut/SPI_FSM File: /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd
+# Fatal error in Process SPI_FSM at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd line 227
+# 
+# HDL call sequence:
+# Stopped at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd 227 Process SPI_FSM
+# 
+# 0 ps
+# 69205500 ps
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Fatal: (vsim-3421) Value 6 for load_past_id is out of range 0 to 5.
+#    Time: 65905 ns  Iteration: 1  Process: /system_testbench/dut/SLOW_CONTROL File: /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd
+# Fatal error in Process SLOW_CONTROL at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd line 459
+# 
+# HDL call sequence:
+# Stopped at /home/volodymyr/Documents/task1/git/mdcupgrade/SPI/code/pasttrec_spi.vhd 459 Process SLOW_CONTROL
+# 
+# 0 ps
+# 69200250 ps
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# ** Note: Load to all chips
+# 
+#    Time: 83545 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 100955 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# A time value could not be extracted from the current line
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd failed with 5 errors.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 1 failed with 5 errors.
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful with warnings.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# ** Note: Read attempt
+# 
+#    Time: 835425 ns  Iteration: 2  Instance: /system_testbench
+# ** Note: Responce: 00000000
+# 
+#    Time: 835455 ns  Iteration: 1  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# ** Note: Read attempt
+# 
+#    Time: 840425 ns  Iteration: 0  Instance: /system_testbench
+# ** Note: Responce: 00000000
+# 
+#    Time: 840455 ns  Iteration: 1  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+# Compile of pasttrec_spi.vhd was successful.
+# Compile of pasttrec_test_module.vhd was successful.
+# Compile of ram_dp_preset.vhd was successful.
+# Compile of spi_ltc2600_simpl.vhd was successful.
+# Compile of system_testbench.vhd was successful.
+# Compile of trb_net_std.vhd was successful.
+# 6 compiles, 0 failed with no errors.
+do run.do
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.trb_net_std(body)
+# Loading work.system_testbench(tb)
+# Loading work.pasttrec_spi(arch)
+# Loading work.ram_dp_preset(ram_dp_arch)
+# Loading work.spi_ltc2600_simpl(spi_ltc2600_arch)
+# Loading work.pasttrec_test_module(tb)
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# ** Note: Read attempt
+# 
+#    Time: 840425 ns  Iteration: 0  Instance: /system_testbench
+# ** Note: Responce: XX8XXXE0
+# 
+#    Time: 840455 ns  Iteration: 1  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+add wave -position 9  sim:/system_testbench/dut/SPI_INTERFACE/readback
+do run.do
+# Load to 2 chip
+# Load to 3 chip
+# Load to 1 chip
+# Load to 4 chip
+# Load to 5 chip
+# Load to 6 chip
+# ** Note: Load to all chips
+# 
+#    Time: 188165 ns  Iteration: 0  Instance: /system_testbench
+# ** Note: Read attempt
+# 
+#    Time: 840425 ns  Iteration: 0  Instance: /system_testbench
+# ** Note: Responce: XX8XXXE0
+# 
+#    Time: 840455 ns  Iteration: 1  Instance: /system_testbench
+# 
+# -------------
+# END | ERRORS: 0
+# -------------
+# 0 ps
+# 1575 us
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# WARNING: No extended dataflow license exists

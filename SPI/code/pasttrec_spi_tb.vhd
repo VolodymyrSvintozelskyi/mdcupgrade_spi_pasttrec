@@ -10,10 +10,10 @@ library work;
 use work.trb_net_std.all;
 use work.clocked_tdc_pkg.all;
 
-entity tb_loader is
-end tb_loader;
+entity pasttrec_spi_tb is
+end entity;
 
-architecture tb of tb_loader is
+architecture tb of pasttrec_spi_tb is
     signal CLK    : std_logic;
     signal BUS_RX : CTRLBUS_RX;
     signal BUS_TX : CTRLBUS_TX;
@@ -91,19 +91,23 @@ begin
         end if;
     end process;
 
-    dut : entity work.loader
-    port map (
+    dut : entity work.pasttrec_spi
+    generic map(
+        SPI_BUNCHES => 1,
+        SPI_PASTTREC_PER_BUNCH => 4,
+        SPI_CHIP_IDs => (7 downto 0 => "11100100", others => '0')
+    )port map (
                 CLK    => CLK,
                 BUS_RX => BUS_RX,
                 BUS_TX => BUS_TX,
 
                 RST_IN => RST_IN,
 
-                SPI_CS_OUT  =>  SPI_CS_OUT,
-                SPI_SDI_IN  =>  SPI_SDI_IN,
-                SPI_SDO_OUT =>  SPI_SDO_OUT,
-                SPI_SCK_OUT =>  SPI_SCK_OUT,
-                SPI_RST_OUT =>  SPI_RST_OUT
+                SPI_CS_OUT(0)  =>  SPI_CS_OUT,
+                SPI_SDI_IN(0)  =>  SPI_SDI_IN,
+                SPI_SDO_OUT(0) =>  SPI_SDO_OUT,
+                SPI_SCK_OUT(0) =>  SPI_SCK_OUT,
+                SPI_RST_OUT(0) =>  SPI_RST_OUT
               );
 
     -- Clock generation
@@ -141,7 +145,7 @@ begin
 
         wait until rising_edge(SPI_RST_OUT);
         wait until rising_edge(SPI_CS_OUT);
-        wait for 150*TbPeriod;
+        wait for 3000*TbPeriod;
 
         wait for 10 * TbPeriod;
         wait until falling_edge(CLK);
@@ -171,6 +175,42 @@ begin
             end if;
         end loop;
         echo ("ERRORS: " & integer'image(num_of_errors) & "------------" & lf & lf & lf);
+
+
+        wait until falling_edge(CLK);
+        BUS_RX.write <= '1';
+        BUS_RX.addr  <= x"a002";
+        BUS_RX.data  <= x"00000000";
+        wait until falling_edge(CLK);
+        BUS_RX.write <= '0';
+
+        --------------- WAIT BLOCK------------------
+        wait_for_responce <= "100";
+        wait_en <= '1';
+        wait until rising_edge(CLK) and wait_end = '1';
+        if wait_error = '1' then
+            num_of_errors := num_of_errors + 1;
+        end if;
+        wait_en <= '0';
+        --------------- END WAIT BLOCK------------------
+
+        wait until falling_edge(CLK);
+        BUS_RX.write <= '1';
+        BUS_RX.addr  <= x"a003";
+        BUS_RX.data  <= x"00000000";
+        wait until falling_edge(CLK);
+        BUS_RX.write <= '0';
+
+        --------------- WAIT BLOCK------------------
+        wait_for_responce <= "100";
+        wait_en <= '1';
+        wait until rising_edge(CLK) and wait_end = '1';
+        if wait_error = '1' then
+            num_of_errors := num_of_errors + 1;
+        end if;
+        wait_en <= '0';
+        --------------- END WAIT BLOCK------------------
+
 
         wait for 5 * TbPeriod;
 
@@ -557,6 +597,8 @@ begin
                 num_of_errors := num_of_errors + 1;
             end if;
         end loop;
+
+        echo (lf & lf  & "Single load test ended. Erros: " & integer'image(num_of_errors) & lf & lf );
 
         wait for 300*TbPeriod;
 

@@ -4,9 +4,17 @@ use ieee.numeric_std.all;
 
 library work;
 use work.trb_net_std.all;
-use work.clocked_tdc_pkg.all;
+--use work.clocked_tdc_pkg.all;
 
-entity loader is
+use IEEE.math_real."ceil";
+use IEEE.math_real."log2";
+
+entity pasttrec_spi is
+    generic (
+        SPI_BUNCHES             : integer range 1 to 4 := 1;
+        SPI_PASTTREC_PER_BUNCH  : positive := 4;
+        SPI_CHIP_IDs            : std_logic_vector(2*4*4 - 1 downto 0)
+    );
     port(
         CLK             : in std_logic;
         BUS_RX          : in CTRLBUS_RX;
@@ -14,15 +22,15 @@ entity loader is
 
         RST_IN          : in std_logic;
 
-        SPI_CS_OUT      : out std_logic;
-        SPI_SDI_IN      : in  std_logic;
-        SPI_SDO_OUT     : out std_logic;
-        SPI_SCK_OUT     : out std_logic;
-        SPI_RST_OUT     : out std_logic
+        SPI_CS_OUT      : out std_logic_vector(SPI_BUNCHES-1 downto 0);
+        SPI_SDI_IN      : in  std_logic_vector(SPI_BUNCHES-1 downto 0);
+        SPI_SDO_OUT     : out std_logic_vector(SPI_BUNCHES-1 downto 0);
+        SPI_SCK_OUT     : out std_logic_vector(SPI_BUNCHES-1 downto 0);
+        SPI_RST_OUT     : out std_logic_vector(SPI_BUNCHES-1 downto 0)
     );
 end entity;
 
-architecture arch of loader is
+architecture arch of pasttrec_spi is
     signal mem_write            : std_logic;
     signal mem_addr1            : std_logic_vector (7 downto 0)     := x"00";
     signal mem_data_out1        : std_logic_vector (31 downto 0);
@@ -44,6 +52,10 @@ architecture arch of loader is
     signal spi_data_in     : std_logic_vector (31 downto 0);
     signal spi_data_out    : std_logic_vector (31 downto 0);
     signal spi_ram_busy    : std_logic;
+    signal spi_cs_out_intrnl: std_logic;
+    signal spi_sdi_in_intrnl: std_logic;
+    signal spi_sdo_out_intrnl: std_logic;
+    signal spi_sck_out_intrnl: std_logic;
 
     signal spi_reg_access  : std_logic;
     signal spi_reg_rw      : std_logic; -- 1-read, 0-write
@@ -52,6 +64,10 @@ architecture arch of loader is
     signal spi_ram_addr    : std_logic_vector(7 downto 0)   := x"00";
     signal spi_ram_offset  : integer range 0 to 63;
 
+    signal spi_active_bunch             : std_logic_vector(SPI_BUNCHES - 1 downto 0) := (others => '0');
+    signal spi_active_bunch_sc          : std_logic_vector(SPI_BUNCHES - 1 downto 0) := (others => '0');
+    signal spi_active_bunch_autoload    : std_logic_vector(SPI_BUNCHES - 1 downto 0) := (others => '0');
+
     signal sc_ram_access   : std_logic;
     signal sc_unknown      : std_logic;
     signal sc_busy         : std_logic;
@@ -59,16 +75,17 @@ architecture arch of loader is
     signal sc_ack          : std_logic;
     signal sc_reset_req    : std_logic;
 
-    signal autoload_chipid : integer range 0 to 3;
+    signal autoload_chipid : integer range 0 to SPI_BUNCHES*SPI_PASTTREC_PER_BUNCH - 1;
     signal autoload_en     : std_logic;
     signal autoload_num    : integer range 0 to 63;
     signal autoload_addr   : std_logic_vector(7 downto 0);
 
-    signal load_chipid     : integer range 0 to 3;
-    signal load_en         : std_logic_vector(3 downto 0);
+    signal load_chipid     : integer range 0 to SPI_BUNCHES*SPI_PASTTREC_PER_BUNCH - 1;
+    signal load_all        : std_logic;
     signal load_trigger    : std_logic;
     signal load_num        : integer range 0 to 63;
     signal load_addr       : std_logic_vector(7 downto 0);
+    signal load_past_id    : integer range 0 to SPI_BUNCHES*SPI_PASTTREC_PER_BUNCH - 1;
 
     signal spi_fsm_control      : std_logic := '0';
     signal spi_fsm_control_addr : std_logic_vector(7 downto 0) := x"00";
@@ -87,6 +104,15 @@ begin
 
     mem_addr3   <= std_logic_vector(to_unsigned(spi_ram_offset + to_integer(unsigned(spi_ram_addr)), 8)) when ( spi_fsm_control = '0' ) else std_logic_vector(to_unsigned(spi_ram_offset + to_integer(unsigned(spi_fsm_control_addr)), 8));
 
+    spi_active_bunch    <= spi_active_bunch_sc when spi_fsm_control = '0' else spi_active_bunch_autoload;
+
+    SPI_OUTPUTS_ASSIGMENT: for i in 0 to SPI_BUNCHES - 1 generate
+        SPI_CS_OUT(i)  <= spi_cs_out_intrnl     or not spi_active_bunch(i);
+        SPI_SCK_OUT(i) <= spi_sck_out_intrnl    or not spi_active_bunch(i);
+        SPI_SDO_OUT(i) <= spi_sdo_out_intrnl    or not spi_active_bunch(i);
+    end generate SPI_OUTPUTS_ASSIGMENT;
+    spi_sdi_in_intrnl   <= or_all(spi_active_bunch and SPI_SDI_IN);
+
     SPI_FSM:   process
         variable tmp    : std_logic_vector(31 downto 0) := (others => '0');
     begin
@@ -96,14 +122,15 @@ begin
         spi_write       <= '0';
         spi_addr        <= x"0";
         spi_data_in     <= (others => '0');
-        mem_addr2       <= (others => '0');
-        SPI_RST_OUT     <= '1';
+        --mem_addr2       <= (others => '0');
+        SPI_RST_OUT     <= (others => '1');
 
         case spi_fsm_state is
             when RESET      =>
                 spi_res     <=  '1';
                 spi_fsm_state   <=  SPI_CONF;
                 spi_fsm_control<= '1';
+                spi_active_bunch_autoload <= (others => '1');
             when SPI_CONF   =>  -- word_length 19
                 spi_write   <= '1';
                 spi_addr    <= x"1";
@@ -113,7 +140,7 @@ begin
                 spi_data_in <= tmp;
                 spi_fsm_state   <=  PASTTREC_RESET_PHASE1;
             when PASTTREC_RESET_PHASE1 =>
-                SPI_RST_OUT <= '0';
+                SPI_RST_OUT <= (others => '0');
                 spi_write       <= '1';
                 spi_addr        <= x"A";
                 spi_data_in     <= (others => '0');
@@ -121,12 +148,12 @@ begin
                 spi_fsm_control_addr    <= x"00";
                 spi_fsm_state   <= PASTTREC_RESET_PHASE2;
             when PASTTREC_RESET_PHASE2 =>
-                SPI_RST_OUT <= '0';
+                SPI_RST_OUT <= (others => '0');
                 if spi_ram_busy = '1' then
                     spi_fsm_state <= PASTTREC_RESET_PHASE3;
                 end if;
             when PASTTREC_RESET_PHASE3 =>
-                SPI_RST_OUT <= '0';
+                SPI_RST_OUT <= (others => '0');
                 if spi_ram_busy = '0' then
                     spi_write   <= '1';
                     spi_addr    <= x"A";
@@ -149,7 +176,7 @@ begin
             when PASTTREC_AUTOLOAD_CONF1=>
                 spi_fsm_state   <= PASTTREC_AUTOLOAD_CONF2;
             when PASTTREC_AUTOLOAD_CONF2=>
-                if autoload_chipid = 0 or autoload_chipid = 2 then
+                if autoload_chipid rem 2 = 0 then
                     autoload_addr   <= mem_data_out2(7 downto 0);
                     autoload_num    <= to_integer(unsigned(mem_data_out2(13 downto 8)));
                     autoload_en     <= mem_data_out2(14);
@@ -165,6 +192,8 @@ begin
                     spi_write       <= '1';
                     spi_addr        <= x"A";
                     spi_data_in     <= (others => '0');
+                    spi_active_bunch_autoload <= (others => '0');
+                    spi_active_bunch_autoload(autoload_chipid / SPI_PASTTREC_PER_BUNCH) <= '1';
                     spi_data_in (7 downto 0)    <= "01" & std_logic_vector(to_unsigned(autoload_num,6));
                     spi_fsm_state   <= PASTTREC_AUTOLOAD_WAIT1;
                 else
@@ -179,16 +208,14 @@ begin
                     spi_fsm_state <= PASTTREC_AUTOLOAD_NEXT;
                 end if;
             when PASTTREC_AUTOLOAD_NEXT   =>
-                if(autoload_chipid = 3) then
+                if(autoload_chipid = SPI_PASTTREC_PER_BUNCH * SPI_BUNCHES - 1) then
                     spi_fsm_state <= IDLE;
                     spi_fsm_control <= '0';
                 else
                     autoload_chipid <= autoload_chipid + 1;
                     spi_fsm_state   <= PASTTREC_AUTOLOAD_CONF1;
-                    if autoload_chipid = 0 then
-                        mem_addr2       <= x"02";
-                    else
-                        mem_addr2       <= x"03";
+                    if autoload_chipid rem 2 = 1 then
+                        mem_addr2 <= std_logic_vector(to_unsigned(to_integer(unsigned(mem_addr2)) + 1,8));
                     end if;
                 end if;
             when IDLE       =>
@@ -197,8 +224,8 @@ begin
                 elsif sc_reset_req = '1' then
                     spi_fsm_state <= RESET;
                 elsif load_trigger='1' then
-                    load_chipid   <= 0;
-                    spi_fsm_control_chipid <= "00";
+                    load_chipid   <= load_past_id;
+                    spi_fsm_control_chipid <= SPI_CHIP_IDs(2*load_past_id + 1 downto 2*load_past_id);
                     spi_fsm_control <= '1';
                     spi_fsm_control_chipid_en <= '1';
                     spi_fsm_control_addr <= load_addr;
@@ -214,36 +241,27 @@ begin
                 spi_data_in <= spi_reg_data;
                 spi_fsm_state <= IDLE;
             when PASTTREC_LOAD  =>
-                if load_en(load_chipid) = '1' then
-                    spi_write <= '1';
-                    spi_addr        <= x"A";
-                    spi_data_in     <= (others => '0');
-                    spi_data_in (7 downto 0)    <= "01" & std_logic_vector(to_unsigned(load_num,6));
-                    spi_fsm_state   <= PASTTREC_LOAD_WAIT1;
-                else
-                    if load_chipid = 3 then
-                        spi_fsm_state   <= IDLE;
-                        spi_fsm_control <= '0';
-                        spi_fsm_control_chipid_en   <= '0';
-                    else
-                        load_chipid <= load_chipid + 1;
-                        spi_fsm_control_chipid <= std_logic_vector(to_unsigned(load_chipid + 1,2));
-                    end if;
-                end if;
+                spi_write <= '1';
+                spi_addr        <= x"A";
+                spi_data_in     <= (others => '0');
+                spi_active_bunch_autoload <= (others => '0');
+                spi_active_bunch_autoload(load_chipid / SPI_PASTTREC_PER_BUNCH) <= '1';
+                spi_data_in (7 downto 0)    <= "01" & std_logic_vector(to_unsigned(load_num,6));
+                spi_fsm_state   <= PASTTREC_LOAD_WAIT1;
             when PASTTREC_LOAD_WAIT1  =>
                 if (spi_ram_busy = '1') then
                     spi_fsm_state <= PASTTREC_LOAD_WAIT2;
                 end if;
             when PASTTREC_LOAD_WAIT2  =>
                 if (spi_ram_busy = '0') then
-                    if load_chipid = 3 then
+                    if load_all = '1' and load_chipid /= SPI_BUNCHES * SPI_PASTTREC_PER_BUNCH - 1 then
+                        load_chipid <= load_chipid + 1;
+                        spi_fsm_control_chipid <= SPI_CHIP_IDs(2*(load_chipid+1) + 1 downto 2*(load_chipid+1));
+                        spi_fsm_state <= PASTTREC_LOAD;
+                    else
                         spi_fsm_state <= IDLE;
                         spi_fsm_control <= '0';
                         spi_fsm_control_chipid_en   <= '0';
-                    else
-                        load_chipid <= load_chipid + 1;
-                        spi_fsm_control_chipid <= std_logic_vector(to_unsigned(load_chipid + 1,2));
-                        spi_fsm_state <= PASTTREC_LOAD;
                     end if;
                 end if;
             when others     =>
@@ -344,16 +362,20 @@ begin
             BUS_ADDR_IN     =>  spi_addr,
             BUS_DATA_IN     =>  spi_data_in,
             BUS_DATA_OUT    =>  spi_data_out,
-            SPI_CS_OUT      =>  SPI_CS_OUT,
-            SPI_SDI_IN      =>  SPI_SDI_IN,
-            SPI_SDO_OUT     =>  SPI_SDO_OUT,
-            SPI_SCK_OUT     =>  SPI_SCK_OUT,
+            SPI_CS_OUT      =>  spi_cs_out_intrnl,
+            SPI_SDI_IN      =>  spi_sdi_in_intrnl,
+            SPI_SDO_OUT     =>  spi_sdo_out_intrnl,
+            SPI_SCK_OUT     =>  spi_sck_out_intrnl,
             RAM_BUSY        =>  spi_ram_busy,
             RAM_OFFSET      =>  spi_ram_offset,
             RAM_DATA        =>  spi_ram_data
         );
 
     SLOW_CONTROL : process
+        constant PAST_ID_WIDTH : integer  := integer(ceil(log2(real(SPI_BUNCHES * SPI_PASTTREC_PER_BUNCH))));
+        variable past_id       : std_logic_vector(PAST_ID_WIDTH - 1 downto 0);
+        variable active_bunches: std_logic_vector(SPI_BUNCHES-1 downto 0);
+        variable active_chip_id: std_logic_vector(1 downto 0);
     begin
         wait until rising_edge(CLK);
         mem_addr1       <= x"00";
@@ -394,17 +416,24 @@ begin
                             spi_reg_data    <= BUS_RX.data;
                             sc_spi_access   <= '1';
                         end if;
-                    elsif BUS_RX.addr(15 downto 8) = x"a2" and BUS_RX.addr(7 downto 6) = "00" then         -- PASTTREC REGISTERS
+                    elsif BUS_RX.addr(15 downto 8) = x"a2" and or_all(BUS_RX.addr(7 downto 4 + PAST_ID_WIDTH)) = '0' then         -- PASTTREC REGISTERS
                         if spi_ram_busy = '1' then
                             sc_busy <= '1';
                         else
+                            past_id := BUS_RX.addr(7 downto 4);
+                            active_bunches := (others => '0');
+                            active_bunches(to_integer(unsigned( past_id)) / SPI_PASTTREC_PER_BUNCH) := '1';
+                            active_chip_id := SPI_CHIP_IDs( to_integer(unsigned( past_id))*2+1 downto to_integer(unsigned( past_id))*2 );
+
+                            spi_active_bunch_sc <= active_bunches;
+
                             mem_addr1       <= x"01";
                             mem_write       <= '1';
                             mem_data_in1    <= (others => '0');
                             mem_data_in1(7 downto 0)    <= BUS_RX.data(7 downto 0);
                             mem_data_in1(11 downto 8)   <= BUS_RX.addr(3 downto 0);
                             mem_data_in1(12)            <= '0';
-                            mem_data_in1(14 downto 13)  <= BUS_RX.addr(5 downto 4);
+                            mem_data_in1(14 downto 13)  <= active_chip_id;
                             mem_data_in1(18 downto 15)  <= "1010";
 
                             spi_ram_addr    <= x"01";
@@ -421,13 +450,13 @@ begin
                         if BUS_RX.addr(7 downto 0) = x"00" then
                             sc_reset_req    <= '1';
                             sc_ack          <= '1';
-                        elsif BUS_RX.addr(4 downto 0) = '0' & x"1" then
+                        elsif BUS_RX.addr(2 downto 0) = o"1" then
                             load_trigger    <= '1';
-                            load_en <= "0000";
+                            load_all<= BUS_RX.addr(7);
                             if BUS_RX.addr(7) = '1' then
-                                load_en <= "1111";
+                                load_past_id <= 0;
                             else
-                                load_en(to_integer(unsigned(BUS_RX.addr(6 downto 5)))) <= '1';
+                                load_past_id <= to_integer(unsigned(BUS_RX.addr(6 downto 3)));
                             end if;
                             load_addr   <= BUS_RX.data(7 downto 0);
                             load_num    <= to_integer(unsigned( BUS_RX.data(13 downto 8) ));

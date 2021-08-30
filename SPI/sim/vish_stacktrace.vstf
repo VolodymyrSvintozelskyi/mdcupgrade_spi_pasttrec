@@ -14,3 +14,18 @@
 # 6    0x085879fb: 'TclInvokeStringCommand + 0x7b' in '/opt/lattice/diamond/3.12/modeltech/linuxloem/vish'
 # 7    0x0d7c88d3: '<unknown (@0xd7c88d3)>'
 # 8    0x0d33e97b: '<unknown (@0xd33e97b)>'
+# Current time Fri Aug 27 14:39:06 2021
+# ModelSim - Lattice FPGA Edition Stack Trace
+# Program = vish
+# Id = "2020.3"
+# Version = "2020.10"
+# Date = "Oct 14 2020"
+# Platform = "linuxloem"
+# 0    0x0826125d: 'GUIname + 0x1d' in '/opt/lattice/diamond/3.12/modeltech/linuxloem/vish'
+# 1    0x08213bf6: '<unknown (@0x8213bf6)>'
+# 2    0x081b9c3f: '<unknown (@0x81b9c3f)>'
+# 3    0x08214af1: 'tclprim_GUIGetFileInstMap + 0xb1' in '/opt/lattice/diamond/3.12/modeltech/linuxloem/vish'
+# 4    0x08212ed9: '<unknown (@0x8212ed9)>'
+# 5    0x085879fb: 'TclInvokeStringCommand + 0x7b' in '/opt/lattice/diamond/3.12/modeltech/linuxloem/vish'
+# 6    0x105a60cb: '<unknown (@0x105a60cb)>'
+# 7    0x0d35600b: '<unknown (@0xd35600b)>'

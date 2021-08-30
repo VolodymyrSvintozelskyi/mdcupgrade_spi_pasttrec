@@ -359,6 +359,15 @@
         <Source name="../../../clocked_tdc/code/FFregs2.vhd" type="VHDL" type_short="VHDL" excluded="TRUE">
             <Options/>
         </Source>
+        <Source name="../code/spi_ltc2600_simpl.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../code/ram_dp_preset.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../code/pasttrec_spi.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
         <Source name="sim/sim.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>

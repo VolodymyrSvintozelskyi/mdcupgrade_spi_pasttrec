@@ -57,7 +57,7 @@ architecture spi_ltc2600_arch of spi_ltc2600_simpl is
   signal readback   : std_logic_vector(31 downto 0);
   signal blocked    : std_logic :='0';
   signal reset_fsm  : std_logic;
-  type   fsm_t is (IDLE, WAIT_STATE, SET, TOGGLE_CS, TOGGLE_CS_0, TOGGLE_CS_1, TOGGLE_CS_2, FINISH);
+  type   fsm_t is (IDLE, WAIT_STATE, SET, TOGGLE_CS, TOGGLE_CS_0, TOGGLE_CS_1, TOGGLE_CS_2, FINISH, FINISH2, FINISH3);
   signal fsm_state : fsm_t;
   signal word_length : integer range 0 to BITS := BITS;
   
@@ -146,7 +146,7 @@ begin
                 BUS_DATA_OUT(15 downto 0) <= ctrl_reg(29 downto 14);
             elsif BUS_ADDR_IN(3 downto 0) = x"B" then                   -- receiving
                 BUS_DATA_OUT <= readback;
-                blocked      <= '0';
+                ctrl_reg(7)  <= '0';
             else
                 BUS_ACK_OUT <= '0';
                 BUS_UNK_OUT <= '1';
@@ -186,26 +186,26 @@ begin
             time_count <= wait_cycles;
             spi_sck    <= not spi_sck;
             if spi_sck = '1' then
-            spi_sdo <= RAM_DATA(bit_count);
-            if bit_count /= 0 then
-                bit_count <= bit_count - 1;
-                fsm_state <= WAIT_STATE;
-            else
-                ram_addr  <= ram_addr + 1;
-                bit_count <= word_length-1;
-                if ram_addr /= word_count -1 then
-                if ctrl_reg(7) = '0' then  --one CS phase
+                spi_sdo <= RAM_DATA(bit_count);
+                if bit_count /= 0 then
+                    bit_count <= bit_count - 1;
                     fsm_state <= WAIT_STATE;
-                else                       --one CS per word
-                    fsm_state <= TOGGLE_CS;
-                end if;
                 else
-                fsm_state <= FINISH;
+                    ram_addr  <= ram_addr + 1;
+                    bit_count <= word_length-1;
+                    if ram_addr /= word_count -1 then
+                        if ctrl_reg(7) = '0' then  --one CS phase
+                            fsm_state <= WAIT_STATE;
+                        else                       --one CS per word
+                            fsm_state <= TOGGLE_CS;
+                        end if;
+                    else
+                        fsm_state <= FINISH;
+                    end if;
                 end if;
-            end if;
             else
-            fsm_state <= WAIT_STATE;
-            readback  <= readback(30 downto 0) & spi_sdi;
+                fsm_state <= WAIT_STATE;
+                readback  <= readback(30 downto 0) & spi_sdi;
             end if;
         when TOGGLE_CS =>
             if time_count = 0 and spi_sck = '0' then
@@ -245,6 +245,25 @@ begin
             spi_sck    <= not spi_sck;
             readback   <= readback(30 downto 0) & spi_sdi;
             elsif time_count = 0 and spi_sck = '1' then
+            fsm_state <= FINISH2;
+            else
+            time_count <= time_count - 1;
+            end if;
+        when FINISH2 =>
+            if time_count = 0 and spi_sck = '1' then
+            time_count <= wait_cycles;
+            spi_sck    <= not spi_sck;
+            elsif time_count = 0 and spi_sck = '0' then
+            fsm_state <= FINISH3;
+            else
+            time_count <= time_count - 1;
+            end if;
+        when FINISH3 =>
+            if time_count = 0 and spi_sck = '0' then
+            time_count <= wait_cycles;
+            spi_sck    <= not spi_sck;
+            readback   <= readback(30 downto 0) & spi_sdi;
+            elsif time_count = 0 and spi_sck = '1' then
             fsm_state <= IDLE;
             else
             time_count <= time_count - 1;
@@ -252,6 +271,7 @@ begin
         end case;
         if RESET_IN = '1' or reset_fsm = '1' then
             fsm_state <= IDLE;
+            readback  <= (others => '1');
         end if;
     end process;
 

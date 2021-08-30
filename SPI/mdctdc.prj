@@ -206,8 +206,6 @@ add_file -vhdl -lib work "../../clocked_tdc/code/Decoder.vhd"
 add_file -vhdl -lib work "../../clocked_tdc/code/HitBuffer.vhd"
 add_file -vhdl -lib work "../../clocked_tdc/code/ReadoutHandler.vhd"
 
-
-
 add_file -vhdl -lib work "./mdctdc.vhd"
 #add_file -fpga_constraint "./synplify.fdc"
 
